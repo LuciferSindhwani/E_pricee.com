@@ -1,0 +1,59 @@
+
+
+        .home-appliance-button {
+            position: relative;
+            display: inline-block;
+            background: linear-gradient(135deg, #4e5057, #3c3f46); /* Metallic look */
+            color: #fff;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            font-weight: bold;
+            padding: 1rem 2.5rem;
+            border: 2px solid #ffffff55;
+            border-radius: 8px;
+            cursor: pointer;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.3), 0 0 30px rgba(0, 255, 200, 0.2);
+            transition: background 0.3s, color 0.3s, transform 0.3s, box-shadow 0.3s;
+        }
+
+        .home-appliance-button:hover {
+            background: linear-gradient(135deg, #4e5057, #00ffc6); /* Glow on hover */
+            color: #000;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.5), 0 0 50px rgba(0, 255, 200, 0.7);
+        }
+
+        /* Circuit-like effect */
+        .home-appliance-button::before {
+            content: '';
+            position: absolute;
+            top: -100%;
+            left: -100%;
+            width: 300%;
+            height: 300%;
+            background: repeating-linear-gradient(
+                45deg,
+                rgba(0, 255, 200, 0.3) 10px,
+                transparent 10px 20px
+            );
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            z-index: 1;
+            pointer-events: none;
+            transition: opacity 0.3s, transform 0.3s;
+        }
+
+        .home-appliance-button:hover::before {
+            opacity: 1;
+            animation: circuitEffect 1.8s infinite linear;
+        }
+
+        @keyframes circuitEffect {
+            0% { transform: translate(-100%, -100%); }
+            100% { transform: translate(100%, 100%); }
+        }
+
+        .home-appliance-button span {
+            position: relative;
+            z-index: 2;
+        }

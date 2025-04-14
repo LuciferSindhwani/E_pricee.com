@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cosmic Feedback | Price Comparison</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #0a0b1a;
+            color: #e0e0ff;
+            background-image: 
+                radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px),
+                radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 30px),
+                radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 40px);
+            background-size: 550px 550px, 350px 350px, 250px 250px;
+            background-position: 0 0, 40px 60px, 130px 270px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background-color: rgba(16, 24, 52, 0.8);
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(89, 111, 255, 0.3), 
+                        0 0 60px rgba(65, 39, 120, 0.2),
+                        inset 0 0 15px rgba(137, 162, 255, 0.3);
+            backdrop-filter: blur(5px);
+            overflow: hidden;
+            position: relative;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .stars {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 0 3px #fff, 0 0 5px #fff;
+            animation: twinkle 5s infinite;
+            opacity: 0;
+        }
+        
+        @keyframes twinkle {
+            0% { opacity: 0; }
+            50% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+        
+        .page-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2.5rem;
+            color: #fff;
+            text-shadow: 0 0 5px #5d5dff, 0 0 10px #3232ff;
+        }
+        
+        .subtitle {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            font-weight: normal;
+            font-size: 1.2rem;
+            color: #b8c6ff;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #d0d8ff;
+            font-weight: bold;
+        }
+        
+        input, textarea, select {
+            width: 100%;
+            padding: 10px 15px;
+            border-radius: 8px;
+            border: 1px solid #2c3e7e;
+            background-color: rgba(23, 29, 58, 0.7);
+            color: #fff;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: #5d5dff;
+            box-shadow: 0 0 0 2px rgba(93, 93, 255, 0.3);
+        }
+        
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .planet {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            position: absolute;
+            z-index: -1;
+        }
+        
+        .planet-1 {
+            background: linear-gradient(145deg, #ff9966, #ff5e62);
+            top: 50px;
+            right: -20px;
+            box-shadow: 0 0 20px rgba(255, 94, 98, 0.6);
+        }
+        
+        .planet-2 {
+            background: linear-gradient(145deg, #7367f0, #ce9ffc);
+            bottom: 80px;
+            left: -25px;
+            width: 90px;
+            height: 90px;
+            box-shadow: 0 0 30px rgba(206, 159, 252, 0.5);
+        }
+        
+        .rating-stars {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+        
+        .star-label {
+            display: inline-block;
+            font-size: 2rem;
+            color: #4a4a7b;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+        
+        input[type="radio"] {
+            display: none;
+        }
+        
+        input[type="radio"]:checked + .star-label,
+        input[type="radio"]:checked ~ input[type="radio"] + .star-label {
+            color: #ffd700;
+            text-shadow: 0 0 5px rgba(255, 215, 0, 0.7);
+        }
+        
+        .star-label:hover,
+        .star-label:hover ~ .star-label {
+            color: #ffdd33;
+        }
+        
+        button {
+            background: linear-gradient(135deg, #6e8efb, #a777e3);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(110, 142, 251, 0.4);
+            display: block;
+            margin: 2rem auto 0;
+        }
+        
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(110, 142, 251, 0.5);
+        }
+        
+        button:active {
+            transform: translateY(0);
+        }
+        
+        .success-message {
+            display: none;
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(39, 174, 96, 0.2);
+            border-radius: 8px;
+            border: 1px solid #27ae60;
+            margin-top: 1rem;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .flying-ufo {
+            position: fixed;
+            top: 70px;
+            left: -100px;
+            width: 60px;
+            height: 30px;
+            background-color: #5d5dff;
+            border-radius: 50%;
+            box-shadow: 0 0 15px #5d5dff, 0 0 30px #5d5dff;
+            animation: fly 15s linear infinite;
+            z-index: 1000;
+        }
+        
+        .ufo-beam {
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 15px;
+            background: linear-gradient(to bottom, rgba(93, 93, 255, 0.7), transparent);
+            clip-path: polygon(0 0, 100% 0, 80% 100%, 20% 100%);
+        }
+        
+        .ufo-top {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 15px;
+            background-color: #b8c6ff;
+            border-radius: 50% 50% 0 0;
+        }
+        
+        @keyframes fly {
+            0% {
+                left: -100px;
+                top: 70px;
+            }
+            25% {
+                left: 25%;
+                top: 15%;
+            }
+            75% {
+                left: 75%;
+                top: 25%;
+            }
+            100% {
+                left: 100%;
+                top: 70px;
+            }
+        }
+        
+        /* Easter Egg */
+        .meteor {
+            position: fixed;
+            width: 4px;
+            height: 4px;
+            background-color: white;
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <div class="flying-ufo">
+        <div class="ufo-top"></div>
+        <div class="ufo-beam"></div>
+    </div>
+    
+    <h1 class="page-title">Cosmic Feedback</h1>
+    <h2 class="subtitle">Your thoughts travel through the universe to reach us</h2>
+    
+    <div class="container">
+        <div class="planet planet-1"></div>
+        <div class="planet planet-2"></div>
+        
+        <!-- Add 20 random stars -->
+        <script>
+            for (let i = 0; i < 20; i++) {
+                const star = document.createElement('div');
+                star.className = 'stars';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 5 + 's';
+                document.querySelector('.container').appendChild(star);
+            }
+        </script>
+        
+        <form id="feedbackForm" onsubmit="return handleSubmit(event)">
+            <div class="form-group">
+                <label for="name">Name (Optional)</label>
+                <input type="text" id="name" name="name" placeholder="Your name">
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="feedbackType">Type of Feedback</label>
+                <select id="feedbackType" name="feedbackType" required>
+                    <option value="">Select an option</option>
+                    <option value="suggestion">Suggestion for Improvement</option>
+                    <option value="bug">Bug Report</option>
+                    <option value="compliment">Compliment</option>
+                    <option value="feature">Feature Request</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label>How would you rate your experience?</label>
+                <div class="rating-stars">
+                    <input type="radio" name="rating" id="star5" value="5" required>
+                    <label for="star5" class="star-label">★</label>
+                    
+                    <input type="radio" name="rating" id="star4" value="4">
+                    <label for="star4" class="star-label">★</label>
+                    
+                    <input type="radio" name="rating" id="star3" value="3">
+                    <label for="star3" class="star-label">★</label>
+                    
+                    <input type="radio" name="rating" id="star2" value="2">
+                    <label for="star2" class="star-label">★</label>
+                    
+                    <input type="radio" name="rating" id="star1" value="1">
+                    <label for="star1" class="star-label">★</label>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="message">Your Feedback</label>
+                <textarea id="message" name="message" placeholder="Tell us what you think..." required></textarea>
+            </div>
+            
+            <button type="submit">Send to the Cosmos</button>
+        </form>
+        
+        <div id="successMessage" class="success-message">
+            Thank you for your feedback! Your message has been sent across the universe.
+        </div>
+    </div>
+    
+    <script>
+        // Handle form submission
+        function handleSubmit(event) {
+            event.preventDefault();
+            
+            // Basic validation
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            
+            if (!email || !message) {
+                alert('Please fill out all required fields.');
+                return false;
+            }
+            
+            // Show success message
+            document.getElementById('feedbackForm').classList.add('hidden');
+            document.getElementById('successMessage').style.display = 'block';
+            
+            // EASTER EGG: Create shooting stars when form is submitted
+            createMeteorShower();
+            
+            return false;
+        }
+        
+        // EASTER EGG: Konami code implementation
+        let konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+        let konamiPosition = 0;
+        
+        document.addEventListener('keydown', function(e) {
+            // Check if the pressed key matches the next key in the Konami code
+            if (e.key === konamiCode[konamiPosition]) {
+                konamiPosition++;
+                
+                // If the complete code is entered
+                if (konamiPosition === konamiCode.length) {
+                    activateSpaceTravel();
+                    konamiPosition = 0;
+                }
+            } else {
+                konamiPosition = 0;
+            }
+        });
+        
+        // EASTER EGG: Space travel effect
+        function activateSpaceTravel() {
+            const colors = ['#ff5e62', '#ce9ffc', '#7367f0', '#5d5dff', '#b8c6ff'];
+            
+            // Create 100 stars that fly past
+            for (let i = 0; i < 100; i++) {
+                setTimeout(() => {
+                    const star = document.createElement('div');
+                    star.style.position = 'fixed';
+                    star.style.width = (Math.random() * 3 + 1) + 'px';
+                    star.style.height = (Math.random() * 3 + 1) + 'px';
+                    star.style.background = colors[Math.floor(Math.random() * colors.length)];
+                    star.style.borderRadius = '50%';
+                    star.style.left = '50%';
+                    star.style.top = '50%';
+                    star.style.transform = 'translate(-50%, -50%)';
+                    star.style.zIndex = '1000';
+                    star.style.pointerEvents = 'none';
+                    
+                    const angle = Math.random() * Math.PI * 2;
+                    const speed = Math.random() * 10 + 10;
+                    
+                    document.body.appendChild(star);
+                    
+                    // Animate the star
+                    let progress = 0;
+                    const animate = () => {
+                        progress += 0.01;
+                        const distance = progress * speed;
+                        star.style.left = `calc(50% + ${Math.cos(angle) * distance * 10}px)`;
+                        star.style.top = `calc(50% + ${Math.sin(angle) * distance * 10}px)`;
+                        star.style.opacity = 1 - progress;
+                        
+                        if (progress < 1) {
+                            requestAnimationFrame(animate);
+                        } else {
+                            star.remove();
+                        }
+                    };
+                    
+                    requestAnimationFrame(animate);
+                }, i * 10);
+            }
+            
+            // Display a message
+            const message = document.createElement('div');
+            message.textContent = "WARP SPEED ACTIVATED";
+            message.style.position = 'fixed';
+            message.style.top = '50%';
+            message.style.left = '50%';
+            message.style.transform = 'translate(-50%, -50%)';
+            message.style.color = 'white';
+            message.style.fontSize = '3rem';
+            message.style.fontWeight = 'bold';
+            message.style.textShadow = '0 0 10px #5d5dff, 0 0 20px #7367f0';
+            message.style.zIndex = '1001';
+            message.style.opacity = '0';
+            message.style.transition = 'opacity 0.5s ease';
+            
+            document.body.appendChild(message);
+            
+            setTimeout(() => {
+                message.style.opacity = '1';
+            }, 100);
+            
+            setTimeout(() => {
+                message.style.opacity = '0';
+                setTimeout(() => {
+                    message.remove();
+                }, 500);
+            }, 2000);
+        }
+        
+        // Create a meteor shower animation
+        function createMeteorShower() {
+            for (let i = 0; i < 20; i++) {
+                setTimeout(() => {
+                    createMeteor();
+                }, i * 300);
+            }
+        }
+        
+        function createMeteor() {
+            const meteor = document.createElement('div');
+            meteor.className = 'meteor';
+            
+            // Set random starting position at the top of the screen
+            const startX = Math.random() * window.innerWidth;
+            meteor.style.left = startX + 'px';
+            meteor.style.top = '0';
+            
+            // Add trail effect
+            meteor.style.boxShadow = '0 0 10px 2px white, 0 0 20px 5px rgba(255, 255, 255, 0.5)';
+            
+            document.body.appendChild(meteor);
+            
+            // Animate the meteor
+            const speed = Math.random() * 3 + 3; // Speed variation
+            const angle = Math.PI / 4 + (Math.random() * Math.PI / 4); // Angle variation
+            
+            let posX = startX;
+            let posY = 0;
+            
+            meteor.style.opacity = '1';
+            
+            const moveMeteor = () => {
+                posX += Math.cos(angle) * speed;
+                posY += Math.sin(angle) * speed;
+                
+                meteor.style.left = posX + 'px';
+                meteor.style.top = posY + 'px';
+                
+                if (posY < window.innerHeight) {
+                    requestAnimationFrame(moveMeteor);
+                } else {
+                    meteor.remove();
+                }
+            };
+            
+            requestAnimationFrame(moveMeteor);
+        }
+        
+        // EASTER EGG: Click on stars to make them twinkle more intensely
+        document.addEventListener('click', function(e) {
+            const stars = document.querySelectorAll('.stars');
+            stars.forEach(star => {
+                const rect = star.getBoundingClientRect();
+                const distance = Math.sqrt(
+                    Math.pow(e.clientX - (rect.left + rect.width/2), 2) + 
+                    Math.pow(e.clientY - (rect.top + rect.height/2), 2)
+                );
+                
+                if (distance < 30) {
+                    star.style.boxShadow = '0 0 10px #fff, 0 0 20px #fff, 0 0 30px #5d5dff';
+                    star.style.opacity = '1';
+                    setTimeout(() => {
+                        star.style.boxShadow = '0 0 3px #fff, 0 0 5px #fff';
+                    }, 500);
+                }
+            });
+        });
+        
+        // EASTER EGG: Hidden console message
+        console.log("%c✨ You found the secret cosmic message! ✨", 
+                    "color: #7367f0; font-size: 20px; font-weight: bold;");
+        console.log("%cTry the Konami code: ↑ ↑ ↓ ↓ ← → ← → B A", 
+                    "color: #5d5dff; font-size: 16px;");
+    </script>
+</body>
+</html>

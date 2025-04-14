@@ -1,0 +1,114 @@
+
+       
+
+        .electric-button {
+            display: inline-block;
+            position: relative;
+            background: linear-gradient(45deg, #222, #444);
+            color: #fff;
+            border: 2px solid #4c4c4c;
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            border-radius: 10px;
+            cursor: url(electric.exe.ani);
+            overflow: hidden;
+            transition: background 0.3s, color 0.3s;
+            padding: 1rem 2.5rem;
+        }
+
+        .electric-button:hover {
+            background: linear-gradient(45deg, #00f7ff, #007eff);
+            color: #0a0c1c;
+        }
+
+        /* Electric arc lines */
+        .electric-button::before,
+        .electric-button::after {
+            content: "";
+            position: absolute;
+            width: 200%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #00f7ff, transparent);
+            top: 50%;
+            left: -100%;
+            animation: electric-horizontal 0.7s infinite ease-in-out;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .electric-button::after {
+            top: auto;
+            bottom: 0;
+            animation: electric-horizontal 0.7s infinite ease-in-out, flicker 0.25s infinite alternate 0.25s;
+        }
+
+        .electric-button:hover::before,
+        .electric-button:hover::after {
+            opacity: 1;
+        }
+
+        /* Sparks shooting from the edges */
+        .electric-button .spark {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            background-color: #00f7ff;
+            opacity: 0;
+            border-radius: 50%;
+            animation: electric-spark 0.15s infinite;
+            pointer-events: none;
+        }
+
+        /* Random jittering movement */
+        @keyframes electric-horizontal {
+            0% {
+                left: -100%;
+            }
+            50% {
+                left: 50%;
+            }
+            100% {
+                left: 100%;
+            }
+        }
+
+        /* Flicker effect for randomness */
+        @keyframes flicker {
+            0% {
+                opacity: 0.7;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.05);
+            }
+            100% {
+                opacity: 0.7;
+                transform: scale(1);
+            }
+        }
+
+        /* Electric spark animation */
+        @keyframes electric-spark {
+            0% {
+                opacity: 0;
+                transform: scale(0);
+                animation-timing-function: ease-out;
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1);
+                animation-timing-function: ease-in;
+            }
+            100% {
+                opacity: 0;
+                transform: scale(0);
+            }
+        }
+
+        /* Adding sparks on hover */
+        .electric-button:hover .spark {
+            animation: electric-spark 0.15s infinite;
+        }
+    

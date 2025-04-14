@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Appliances - Price Comparison</title>
+    <link rel="stylesheet" href="main1.css">
+    <link rel="stylesheet" href="heading.css">
+    <link rel="stylesheet" href="background.css">
+    <link rel="stylesheet" href="intro.css">
+    <link rel="stylesheet" href="chatbot.css">
+    <link rel="stylesheet" href="footer.css">
+    <link rel="stylesheet" href="menu.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        header {
+            display: flex;
+            justify-content: center;
+            color: aliceblue;
+        }
+
+        .product-card {
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            color: #fff;
+        }
+
+        .product-card img {
+            max-width: 100%;
+            border-radius: 10px;
+        }
+
+        .product-card h2 {
+            font-size: 1.5rem;
+            margin: 10px 0;
+        }
+
+        .product-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .product-card ul li {
+            margin: 5px 0;
+        }
+
+        /* Footer Styling */
+        footer {
+            background-color: #222;
+            color: #fff;
+            text-align: center;
+            padding: 20px 10px;
+            font-size: 0.9rem;
+            border-top: 1px solid #444;
+        }
+
+        footer a.line {
+            color: #4caf50;
+            text-decoration: none;
+        }
+
+        footer a.line:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+  
+   
+    <!-- Header Section -->
+    <header>
+        <div class="cosmic-menu-container">
+            <button class="cosmic-button" id="menuButton">
+                <div class="menu-icon">
+                    <div class="menu-lines"></div>
+                    <div class="menu-lines"></div>
+                    <div class="menu-lines"></div>
+                </div>
+            </button>
+            <nav class="cosmic-menu" id="cosmicMenu">
+                <a href="index.html" class="menu-item">Home</a>
+                <a href="electronics.html" class="menu-item">Electronics</a>
+                <a href="fashion.html" class="menu-item">Fashion</a>
+                <a href="home-appliances.html" class="menu-item">Home Appliances</a>
+                <a href="grocery.html" class="menu-item">Grocery</a>
+                <a href="gaming.html" class="menu-item">Gaming</a>
+            </nav>
+        
+    
+        <script>
+            const menuButton = document.getElementById('menuButton');
+            const cosmicMenu = document.getElementById('cosmicMenu');
+    
+            menuButton.addEventListener('click', () => {
+                cosmicMenu.classList.toggle('open');
+            });
+        </script>
+    
+        <!-- Cosmos Background -->
+        <div class="stars-container"></div>
+        <div class="nebula nebula-1"></div>
+        <div class="nebula nebula-2"></div>
+        <div class="planet planet-1"></div>
+        <div class="planet planet-2"></div>
+        <div class="planet planet-3"></div>
+    </div>
+    
+        <div class="a">
+            <h1 class="heading">
+                <div class="typing-container">
+                    <span id="typing"></span>
+                    <span class="cursor"></span>
+                </div>
+            </h1>
+        </div>
+        
+        <script>
+            const words = ["Couch", "Basket", "Bed Sheet", "Curtains", "Chairs"];
+            let wordIndex = 0;
+            let charIndex = 0;
+            let isDeleting = false;
+
+            const typingElement = document.getElementById("typing");
+
+            function type() {
+                const currentWord = words[wordIndex];
+                if (isDeleting) {
+                    charIndex--;
+                } else {
+                    charIndex++;
+                }
+
+                typingElement.textContent = "Find the Best Deals on " + currentWord.substring(0, charIndex);
+
+                const typingSpeed = isDeleting ? 50 : 100;
+
+                if (!isDeleting && charIndex === currentWord.length) {
+                    isDeleting = true;
+                    setTimeout(type, 500);
+                } else if (isDeleting && charIndex === 0) {
+                    isDeleting = false;
+                    wordIndex = (wordIndex + 1) % words.length;
+                    setTimeout(type, 300);
+                } else {
+                    setTimeout(type, typingSpeed);
+                }
+            }
+
+            type();
+        </script>
+    </header>
+
+    <!-- Product Section -->
+    <section class="product-container">
+        <!-- Product 1 -->
+        <div class="product-card">
+            <img src="https://sp.yimg.com/ib/th?id=OPAC.MasLdbWtdcoTDQ474C474&o=5&pid=21.1&w=160&h=105" alt="Curtains">
+            <h2>Curtains</h2>
+            <p>Price Comparison:</p>
+            <ul>
+                <li>Amazon: $999</li>
+                <li>eBay: $950</li>
+                <li>Best Buy: $970</li>
+            </ul>
+        </div>
+
+        <!-- Product 2 -->
+        <div class="product-card">
+            <img src="https://tse2.mm.bing.net/th?id=OIP.GpKq3G8DEn4-d5Ph3kED5gHaHa&pid=Api&P=0&h=180" alt="Bedsheets">
+            <h2>Bedsheets</h2>
+            <p>Price Comparison:</p>
+            <ul>
+                <li>Amazon: $699</li>
+                <li>eBay: $680</li>
+                <li>Walmart: $690</li>
+            </ul>
+        </div>
+
+        <!-- Product 3 -->
+        <div class="product-card">
+            <img src="https://tse1.mm.bing.net/th?id=OIP.MGAOZR4zkZdSrCEXxTIFZwAAAA&pid=Api&P=0&h=180" alt="Cupboards">
+            <h2> Cupboards</h2>
+            <p>Price Comparison:</p>
+            <ul>
+                <li>Amazon: $199</li>
+                <li>eBay: $180</li>
+                <li>Best Buy: $190</li>
+            </ul>
+        </div>
+
+        <!-- Product 4 -->
+        <div class="product-card">
+            <img src="https://tse4.mm.bing.net/th?id=OIP.RcVqAzixAhly5w--FVhP7wHaFr&pid=Api&P=0&h=180" alt="Table">
+            <h2> Table</h2>
+            <p>Price Comparison:</p>
+            <ul>
+                <li>Amazon: $299</li>
+                <li>eBay: $280</li>
+                <li>Walmart: $290</li>
+            </ul>
+        </div>
+
+        <div class="product-card">
+            <img src="https://tse3.mm.bing.net/th?id=OIP.opROa1dxrZFYhtM2I7RrzwHaFT&pid=Api&P=0&h=180" alt="Beds">
+            <h2>Beds</h2>
+            <p>Price Comparison:</p>
+            <ul>
+                <li>Amazon: $999</li>
+                <li>eBay: $950</li>
+                <li>Best Buy: $970</li>
+            </ul>
+        </div>
+
+        <div class="product-card">
+            <img src="https://sp.yimg.com/ib/th?id=OPAC.BUPUU%2f%2buR%2b3dzA474C474&o=5&pid=21.1&w=160&h=105" alt="Chair">
+            <h2>Chairs </h2>
+            <p>Price Comparison:</p>
+            <ul>
+                <li>Amazon: $999</li>
+                <li>eBay: $950</li>
+                <li>Best Buy: $970</li>
+            </ul>
+        </div>
+
+        <div class="product-card">
+            <img src="https://sp.yimg.com/ib/th?id=OPAC.pxpjdf75bx4vBQ474C474&o=5&pid=21.1&w=160&h=105" alt="Couch">
+            <h2>Couch</h2>
+            <p>Price Comparison:</p>
+            <ul>
+                <li>Amazon: $999</li>
+                <li>eBay: $950</li>
+                <li>Best Buy: $970</li>
+            </ul>
+        </div>
+
+        <div class="product-card">
+            <img src="https://sp.yimg.com/ib/th?id=OPAC.PS7ur9AFV3I8HA474C474&o=5&pid=21.1&w=160&h=105" alt="Hangers">
+            <h2>Hangers </h2>
+            <p>Price Comparison:</p>
+            <ul>
+                <li>Amazon: $999</li>
+                <li>eBay: $950</li>
+                <li>Best Buy: $970</li>
+            </ul>
+        </div>
+
+        <div class="product-card">
+            <img src="https://sp.yimg.com/ib/th?id=OPAC.MKAy4YfA4cLeUg474C474&o=5&pid=21.1&w=160&h=105" alt="Baskets">
+            <h2>Baskets </h2>
+            <p>Price Comparison:</p>
+            <ul>
+                <li>Amazon: $999</li>
+                <li>eBay: $950</li>
+                <li>Best Buy: $970</li>
+            </ul>
+        </div>
+    </section>
+
+    <footer>
+        <div id="footer_text1">Download: <a class="line" href="#">Android Application</a> | <a class="line" href="#">iOS Application</a></div>
+        <div>&copy; Copyright Red Pixels Ventures Limited 2023. All rights reserved.</div>
+    </footer>
+</body>
+</html>

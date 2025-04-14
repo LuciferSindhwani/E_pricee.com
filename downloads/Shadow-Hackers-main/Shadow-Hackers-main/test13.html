@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search with Multiple Options</title>
+    <style>
+        /* Basic reset */
+        body, h1, input {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Full page styling */
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f2f2f2;
+            text-align: center;
+            flex-direction: column;
+        }
+
+        /* Search container */
+        .search-container {
+            width: 100%;
+            max-width: 600px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Search input styling */
+        .search-input {
+            width: 100%;
+            max-width: 500px;
+            padding: 16px;
+            font-size: 18px;
+            border: 1px solid #dcdcdc;
+            border-radius: 24px;
+            outline: none;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+
+        .search-input:focus {
+            border-color: #4285f4;
+            box-shadow: 0 1px 6px rgba(0, 0, 255, 0.2);
+        }
+
+        /* Search button styling */
+        .search-button {
+            padding: 12px 30px;
+            font-size: 16px;
+            border: none;
+            border-radius: 24px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 10px;
+        }
+
+        /* Dropdown menu container */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-radius: 8px;
+        }
+
+        .dropdown-content button {
+            padding: 12px 16px;
+            width: 100%;
+            background-color: #f9f9f9;
+            border: none;
+            text-align: left;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: background-color 0.3s;
+        }
+
+        .dropdown-content button:hover {
+            background-color: #ddd;
+        }
+
+        /* Show dropdown menu when hovering over button */
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Option button styles */
+        .footer {
+            margin-top: 20px;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .footer a {
+            color: #4285f4;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="search-container">
+        <!-- Search Input -->
+        <input type="text" class="search-input" id="search-input" placeholder="Enter your search query" />
+
+        <!-- Dropdown button to show search options -->
+        <div class="dropdown">
+            <button class="search-button">Search</button>
+            <div class="dropdown-content">
+                <button onclick="performSearch('amazon')">Amazon</button>
+                <button onclick="performSearch('flipkart')">Flipkart</button>
+                <button onclick="performSearch('myntra')">Myntra</button>
+                <button onclick="performSearch('meesho')">Meesho</button>
+            </div>
+        </div>
+
+        <!-- Footer with links -->
+        <div class="footer">
+            <p>© 2024 Search Bar | <a href="#">Privacy</a> | <a href="#">Terms</a></p>
+        </div>
+    </div>
+
+    <script>
+        // Perform search on the selected platform
+        function performSearch(platform) {
+            const query = document.getElementById('search-input').value.trim();
+            if (query) {
+                let url = '';
+                switch(platform) {
+                    case 'amazon':
+                        url = `https://www.amazon.com/s?k=${encodeURIComponent(query)}`;
+                        break;
+                    case 'flipkart':
+                        url = `https://www.flipkart.com/search?q=${encodeURIComponent(query)}`;
+                        break;
+                    case 'myntra':
+                        url = `https://www.myntra.com/search?q=${encodeURIComponent(query)}`;
+                        break;
+                    case 'meesho':
+                        url = `https://www.meesho.com/search?q=${encodeURIComponent(query)}`;
+                        break;
+                    default:
+                        alert("Invalid platform selected.");
+                        return;
+                }
+                window.location.href = url;
+            } else {
+                alert("Please enter a search query.");
+            }
+        }
+    </script>
+
+</body>
+</html>

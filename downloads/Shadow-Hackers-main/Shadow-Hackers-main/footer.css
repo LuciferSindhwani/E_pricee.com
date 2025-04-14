@@ -1,0 +1,109 @@
+/* Backfoot Section */
+#backfoot {
+    background: linear-gradient(135deg, #2a2a40, #3a3a5f);
+    color: #ffffff;
+    padding: 30px;
+    text-align: center;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    font-family: 'Poppins', sans-serif;
+    max-width: 1200px; /* Match the product cards container width */
+    margin: 30px auto; /* Center the backfoot section */
+    position: relative;
+    overflow: hidden;
+}
+
+#backfoot::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent 70%);
+    animation: rotateGlow 10s linear infinite;
+    z-index: 0;
+}
+
+@keyframes rotateGlow {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+#backfoot h2 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.5);
+    z-index: 1;
+    position: relative;
+}
+
+#backfoot p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #dcdcdc;
+    z-index: 1;
+    position: relative;
+}
+
+#backfoot a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    z-index: 1;
+    position: relative;
+}
+
+#backfoot a:hover {
+    text-decoration: underline;
+    color: #ffcccb;
+}
+
+/* Footer Section */
+#footerContainer {
+    background: linear-gradient(135deg, #3a3a5f, #2a2a40);
+    color: #ffffff;
+    padding: 20px 30px;
+    text-align: center;
+    border-top: 2px solid rgba(255, 255, 255, 0.2);
+    font-family: 'Poppins', sans-serif;
+    position: relative;
+    overflow: hidden;
+}
+
+#footerContainer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.05), transparent 70%);
+    z-index: 0;
+}
+
+#footerContainer a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    z-index: 1;
+    position: relative;
+}
+
+#footerContainer a:hover {
+    text-decoration: underline;
+    color: #ffcccb;
+}
+
+#footerContainer div {
+    margin: 5px 0;
+    font-size: 0.9rem;
+    color: #dcdcdc;
+    z-index: 1;
+    position: relative;
+}

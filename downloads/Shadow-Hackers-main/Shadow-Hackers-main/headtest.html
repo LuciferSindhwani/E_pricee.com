@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Header</title>
+    <style>
+        header {
+    background-color: #2d2b2f;
+    padding: 10px 20px; /* Reduced padding for a smaller height */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    height: 60px; /* Explicit height to control header size */
+}
+
+header .logo {
+    font-size: 24px; /* Adjusted for smaller header */
+    color: white;
+    font-weight: bold;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    gap: 15px; /* Adjust spacing between nav items */
+    margin: 0;
+    padding: 0;
+    align-items: center; /* Ensures vertical alignment */
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px; /* Adjusted font size for compact header */
+}
+
+.typing-container {
+    font-size: 1.5rem; /* Reduced font size to fit header height */
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 3px solid #ffffff;
+    animation: typing 1s steps(8) infinite, blink 0.6s step-end infinite;
+    color: #ffffff;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+    height: 40px; /* Adjusted height to fit compact header */
+}
+
+.search-input {
+    font-size: 14px; /* Smaller font for input */
+    padding: 8px 15px; /* Reduced padding */
+    height: 40px;
+}
+
+.search-button {
+    width: 40px; /* Reduced button size */
+    height: 40px;
+}
+
+.menu-button {
+    padding: 10px 20px; /* Adjusted for smaller header */
+    font-size: 16px;
+}
+ 
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">E_Pricee</div>
+        <nav>
+            <ul>
+                <li>
+                    <div class="search-container">
+                        <input type="text" class="search-input" placeholder="Search...">
+                        <button class="search-button" id="searchButton" aria-label="Search">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001a1 1 0 0 0 .196 1.316l3.85 3.85a1 1 0 0 0 1.415-1.415l-3.85-3.85a1 1 0 0 0-1.316-.196zm-5.742 1.606a5.5 5.5 0 1 1 0-11 5.5 5.5 0 0 1 0 11z" />
+                            </svg>
+                        </button>
+                    </div>
+                </li>
+                <li><a href="new.html">Login</a></li>
+                <li><a href="electronics.html">Electronics</a></li>
+                <li><a href="fashion.html">Fashion</a></li>
+                <li><a href="home-appliances.html">Home</a></li>
+                <li><a href="beauty.html">Beauty</a></li>
+            </ul>
+        </nav>
+    </header>
+    <script>
+        const searchButton = document.getElementById('searchButton');
+        const searchContainer = document.querySelector('.search-container');
+
+        searchButton.addEventListener('click', () => {
+            searchContainer.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

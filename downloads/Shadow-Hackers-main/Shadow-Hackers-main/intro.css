@@ -1,0 +1,194 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #0B0E17;
+  color: white;
+  /* perspective: 1000px; */
+}
+
+.intro-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: #000;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+#stars-container {
+  /* position: absolute; */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden; /* Prevent stars from overflowing */
+  z-index: 0;
+}
+
+.stars-container,
+.starfield,
+.nebula,
+.planet,
+.cosmic-portal,
+.star-burst,
+.final-portal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1; /* Ensure they stay behind the logo-container */
+}
+
+.stars-container .star {
+  position: absolute;
+  background-color: white;
+  border-radius: 50%;
+  animation: twinkle 5s infinite;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+.starfield {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  animation: rotate 240s infinite linear;
+}
+
+@keyframes rotate {
+  0% { transform: rotateZ(0deg); }
+  100% { transform: rotateZ(360deg); }
+}
+
+.logo-container {
+  text-align: center;
+  color: white;
+  animation: fadeIn 3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.8); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.logo {
+  font-size: 4rem;
+  font-weight: 800;
+  color: transparent;
+  background: linear-gradient(45deg, #9370DB, #4B0082, #8A2BE2);
+  background-clip: text;
+  -webkit-background-clip: text;
+  text-shadow: 0 0 20px rgba(147, 112, 219, 0.5);
+}
+
+.tagline {
+  font-size: 1.5rem;
+  color: #B8C1EC;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 2s forwards ease-out 2s;
+}
+
+@keyframes fadeUp {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.intro-container .nebula,
+.intro-container .planet,
+.intro-container .cosmic-portal,
+.intro-container .star-burst,
+.intro-container .final-portal {
+  position: absolute;
+  animation: float 10s infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.cosmic-portal {
+  position: absolute;
+  width: 0;
+  height: 0;
+  background: radial-gradient(circle, #4B0082, transparent);
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  animation: portalExpand 3s forwards cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+@keyframes portalExpand {
+  0% { width: 0; height: 0; opacity: 0; }
+  50% { opacity: 0.7; }
+  100% { width: 200%; height: 200%; opacity: 0; }
+}
+
+.final-portal {
+  position: absolute;
+  width: 0;
+  height: 0;
+  background: radial-gradient(circle, #4B0082, transparent);
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+  animation: finalPortalExpand 2s forwards cubic-bezier(0.19, 1, 0.22, 1) 5s;
+}
+
+@keyframes finalPortalExpand {
+  0% { width: 0; height: 0; opacity: 0; }
+  50% { opacity: 0.9; }
+  100% { width: 300%; height: 300%; opacity: 1; }
+}
+
+.content {
+  opacity: 0;
+  display: none;
+  position: relative;
+  z-index: 5;
+  padding: 20px;
+  transition: opacity 1s ease;
+}
+
+#footerContainer {
+  display: block; /* Ensure it is visible */
+  opacity: 1; /* Fully visible */
+  transition: opacity 1s ease; /* Add a fade-in effect */
+}
+
+#backfoot {
+  display: block; /* Ensure it is visible */
+  opacity: 0; /* Ensure it fades in smoothly */
+  transition: opacity 1s ease; /* Add a fade-in effect */
+}
+
+#mainContent {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px;
+  opacity: 0;
+  display: none;
+  transition: opacity 1s ease;
+}

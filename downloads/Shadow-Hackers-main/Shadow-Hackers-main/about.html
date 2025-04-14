@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - E_Pricee</title>
+    <style>
+        :root {
+            --deep-space: #0b0d17;
+            --cosmic-blue: #1a237e;
+            --star-shine: #ffeb3b;
+            --nebula-pink: #d81b60;
+            --galactic-purple: #6a1b9a;
+            --space-gray: #b0bec5;
+            --meteor-orange: #ff6d00;
+            --space-white: #f5f5f5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--deep-space);
+            color: var(--space-white);
+            background-image: 
+                radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 10px),
+                radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 5px),
+                radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 10px);
+            background-size: 550px 550px, 350px 350px, 250px 250px;
+            background-position: 0 0, 40px 60px, 130px 270px;
+            overflow-x: hidden;
+        }
+
+        header {
+            background: linear-gradient(to right, var(--cosmic-blue), var(--galactic-purple));
+            padding: 1.5rem;
+            position: relative;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--star-shine);
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background-color: var(--star-shine);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--cosmic-blue);
+            font-weight: bold;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav ul li a {
+            color: var(--space-white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--star-shine);
+        }
+
+        .hero {
+            position: relative;
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at center, var(--cosmic-blue) 0%, transparent 70%);
+            opacity: 0.3;
+            pointer-events: none;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 2;
+            text-shadow: 0 0 15px rgba(255, 235, 59, 0.7);
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--star-shine);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(to right, var(--nebula-pink), var(--star-shine));
+        }
+
+        .story-section {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        .story-content {
+            flex: 1;
+        }
+
+        .story-content h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--meteor-orange);
+        }
+
+        .story-image {
+            flex: 1;
+            position: relative;
+            height: 400px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .story-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .values-section {
+            margin-bottom: 4rem;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .value-card {
+            background: linear-gradient(145deg, rgba(26, 35, 126, 0.2), rgba(106, 27, 154, 0.2));
+            backdrop-filter: blur(5px);
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .value-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .value-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--star-shine);
+        }
+
+        .value-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--meteor-orange);
+        }
+
+        .team-section {
+            margin-bottom: 4rem;
+        }
+
+        .difference-section {
+            margin-bottom: 4rem;
+        }
+
+        .difference-columns {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .difference-item {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .difference-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--nebula-pink);
+        }
+
+        .contact-section {
+            background: linear-gradient(to right, rgba(26, 35, 126, 0.7), rgba(106, 27, 154, 0.7));
+            padding: 4rem 0;
+            border-radius: 20px;
+            margin-bottom: 4rem;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .contact-item {
+            text-align: center;
+        }
+
+        .contact-item i {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--star-shine);
+        }
+
+        .contact-item h3 {
+            margin-bottom: 0.5rem;
+            color: var(--space-white);
+        }
+
+        .cta-section {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: linear-gradient(to right, var(--meteor-orange), var(--nebula-pink));
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(255, 109, 0, 0.4);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(255, 109, 0, 0.6);
+        }
+
+        footer {
+            background: var(--cosmic-blue);
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--space-white);
+            transition: transform 0.3s, background 0.3s;
+        }
+
+        .social-icon:hover {
+            transform: translateY(-5px);
+            background: var(--star-shine);
+            color: var(--deep-space);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links a {
+            color: var(--space-white);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--star-shine);
+        }
+
+        .copyright {
+            color: var(--space-gray);
+            font-size: 0.9rem;
+        }
+
+        /* Stars animation */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            background: radial-gradient(circle, var(--cosmic-blue) 0%, transparent 70%);
+        }
+
+        /* Stars */
+        .star {
+            position: absolute;
+            background-color: var(--star-shine);
+            border-radius: 50%;
+            animation: twinkle var(--duration) infinite;
+            opacity: var(--opacity);
+            box-shadow: 0 0 5px var(--star-shine);
+        }
+
+        /* Constellation lines */
+        .constellation-line {
+            position: absolute;
+            background-color: var(--nebula-pink);
+            height: 1px;
+            transform-origin: 0 0;
+            z-index: 0;
+            transition: opacity 1s ease;
+        }
+
+        @keyframes twinkle {
+            0% {
+                opacity: var(--opacity);
+            }
+            50% {
+                opacity: 0.2;
+            }
+            100% {
+                opacity: var(--opacity);
+            }
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+
+            .story-section {
+                flex-direction: column;
+            }
+            
+            .story-image {
+                height: 300px;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="stars" id="stars"></div>
+    
+    <header>
+        <nav>
+            <div class="logo">
+                <div class="logo-icon">E</div>
+                <span>E_Pricee</span>
+            </div>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">How It Works</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Categories</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div>
+            <h1>Exploring the Universe of Savings</h1>
+            <p>Navigating the digital marketplace to reveal the best prices across the galaxy of e-commerce.</p>
+        </div>
+    </section>
+
+    <div class="container">
+        <section class="mission-section">
+            <h2 class="section-title">Our Mission</h2>
+            <p>At E_Pricee, we believe in making the vast universe of online shopping accessible, transparent, and affordable for everyone. Just as astronomers chart the cosmos to uncover its mysteries, we navigate the digital marketplace to reveal the best prices across the galaxy of e-commerce.</p>
+        </section>
+
+        <section class="story-section">
+            <div class="story-content">
+                <h2>Our Story</h2>
+                <p>E_Pricee was born from a simple observation: finding the best price online shouldn't require light-years of searching.</p>
+                <br>
+                <p>Founded in 2021 by a team of technology enthusiasts and savvy shoppers, we set out to create a platform that would serve as your personal telescope into the universe of online retail. What started as a small constellation of price comparisons has expanded into a comprehensive star map of savings across thousands of retailers and millions of products.</p>
+            </div>
+            <div class="story-image">
+                <img src="/api/placeholder/600/400" alt="E_Pricee founding team">
+            </div>
+        </section>
+
+        <section class="how-section">
+            <h2 class="section-title">How We Work</h2>
+            <p>Our advanced algorithm works like a powerful space telescope, constantly scanning the digital universe to discover new deals, compare across dimensions, navigate with precision, and track cosmic patterns of pricing.</p>
+            <br>
+            <div class="value-card" id="algorithm-card">
+                <p>Our powerful algorithm scans thousands of retailers every hour, processing millions of data points to find you the best deals in the digital universe.</p>
+            </div>
+        </section>
+
+        <section class="difference-section">
+            <h2 class="section-title">The E_Pricee Difference</h2>
+            <div class="difference-columns">
+                <div class="difference-item">
+                    <h3>Universal Coverage</h3>
+                    <p>We track prices across the entire spectrum of online retailers, from supergiant marketplaces to specialized boutique stores.</p>
+                </div>
+                <div class="difference-item">
+                    <h3>Stellar Speed</h3>
+                    <p>Our real-time updates ensure you're seeing the most current prices in the digital cosmos.</p>
+                </div>
+                <div class="difference-item">
+                    <h3>Gravitational Pull</h3>
+                    <p>We attract only the most relevant results, filtering out the space debris to show you exactly what you're looking for.</p>
+                </div>
+                <div class="difference-item">
+                    <h3>Constellation of Categories</h3>
+                    <p>From electronics to fashion, home goods to services—our categories span the entire shopping universe.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="values-section">
+            <h2 class="section-title">Our Values</h2>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">★</div>
+                    <h3>Transparency</h3>
+                    <p>Clear as the view from the Hubble telescope. We believe in showing you exactly where prices come from and how they compare.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">◎</div>
+                    <h3>Accuracy</h3>
+                    <p>Precise as the orbit of celestial bodies. Our data is constantly verified to ensure you get reliable price information.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">☉</div>
+                    <h3>User-Centric</h3>
+                    <p>You are the center of our universe. Every feature we build is designed with your needs and experience in mind.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">⟁</div>
+                    <h3>Innovation</h3>
+                    <p>Constantly exploring new frontiers of technology to bring you better comparison tools and insights.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <h2 class="section-title">Join Our Orbit</h2>
+            <p>Become part of the E_Pricee community and never overpay again. Sign up for price alerts, personalized recommendations, and exclusive deals that will make your shopping experience truly stellar.</p>
+            <br><br>
+            <a href="#" class="cta-button">Launch Your Journey</a>
+        </section>
+
+        <section class="contact-section">
+            <div class="container">
+                <h2 class="section-title">Contact Us</h2>
+                <div class="contact-grid">
+                    <div class="contact-item">
+                        <i>✉</i>
+                        <h3>Email</h3>
+                        <p>support@epricee.com</p>
+                    </div>
+                    <div class="contact-item">
+                        <i>☏</i>
+                        <h3>Phone</h3>
+                        <p>(555) 123-4567</p>
+                    </div>
+                    <div class="contact-item">
+                        <i>⊕</i>
+                        <h3>Social Media</h3>
+                        <p>@E_Pricee on all platforms</p>
+                    </div>
+                    <div class="contact-item">
+                        <i>⌂</i>
+                        <h3>Headquarters</h3>
+                        <p>789 Cosmos Boulevard, Stellar City, SC 10101</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="social-links">
+            <a href="#" class="social-icon">f</a>
+            <a href="#" class="social-icon">t</a>
+            <a href="#" class="social-icon">in</a>
+            <a href="#" class="social-icon">ig</a>
+        </div>
+        <div class="footer-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">FAQ</a>
+            <a href="#">Careers</a>
+            <a href="#">Blog</a>
+        </div>
+        <p class="copyright">© 2025 E_Pricee. All rights reserved. Where savings are written in the stars.</p>
+    </footer>
+
+    <script>
+        // Create stars
+        const createStars = () => {
+            const starsContainer = document.getElementById('stars');
+            const numberOfStars = 200;
+
+            for (let i = 0; i < numberOfStars; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
+
+                // Random position
+                const x = Math.random() * 100;
+                const y = Math.random() * 100;
+
+                // Random size and opacity
+                const size = Math.random() * 3;
+                const opacity = Math.random() * 0.7 + 0.3;
+
+                // Random twinkle duration
+                const duration = Math.random() * 3 + 2 + 's';
+
+                // Apply theme colors
+                star.style.backgroundColor = 'var(--star-shine)';
+                star.style.boxShadow = `0 0 5px var(--star-shine)`;
+
+                star.style.left = `${x}%`;
+                star.style.top = `${y}%`;
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                star.style.setProperty('--opacity', opacity);
+                star.style.setProperty('--duration', duration);
+
+                starsContainer.appendChild(star);
+            }
+        };
+
+        // Function to connect two stars with a line
+        function connectStars(x1, y1, x2, y2) {
+            const line = document.createElement('div');
+            line.className = 'constellation-line';
+
+            // Calculate the distance between two points
+            const length = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
+
+            // Calculate the angle to rotate the line
+            const angle = Math.atan2(y2 - y1, x2 - x1) * 180 / Math.PI;
+
+            // Position and rotate the line
+            line.style.width = `${length}%`;
+            line.style.left = `${x1}%`;
+            line.style.top = `${y1}%`;
+            line.style.transform = `rotate(${angle}deg)`;
+            line.style.opacity = 0.3 + Math.random() * 0.4;
+
+            // Apply theme color
+            line.style.backgroundColor = 'var(--nebula-pink)';
+
+            starsContainer.appendChild(line);
+            return line;
+        }
+
+        // Scroll animation
+        const scrollAnimation = () => {
+            const valueCards = document.querySelectorAll('.value-card');
+            const differenceItems = document.querySelectorAll('.difference-item');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            valueCards.forEach(card => {
+                card.style.opacity = 0;
+                card.style.transform = 'translateY(50px)';
+                card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(card);
+            });
+            
+            differenceItems.forEach((item, index) => {
+                item.style.opacity = 0;
+                item.style.transform = 'translateY(50px)';
+                item.style.transition = `opacity 0.6s ease ${index * 0.15}s, transform 0.6s ease ${index * 0.15}s`;
+                observer.observe(item);
+            });
+        };
+
+        // Algorithm card animation
+        const animateAlgorithmCard = () => {
+            const card = document.getElementById('algorithm-card');
+            let hue = 0;
+
+            setInterval(() => {
+                hue = (hue + 1) % 360;
+                const color = `hsl(${hue}, 70%, 50%, 0.1)`;
+                card.style.boxShadow = `0 0 20px var(--galactic-purple)`;
+            }, 100);
+        };
+
+        // Initialize
+        window.addEventListener('DOMContentLoaded', () => {
+            createStars();
+            scrollAnimation();
+            animateAlgorithmCard();
+        });
+    </script>
+</body>
+</html>

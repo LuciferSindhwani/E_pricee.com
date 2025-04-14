@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sort and Search</title>
+    <style>
+        /* General Styling */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #0a0b1a; /* Dark cosmic background */
+            color: #e0e0ff; /* Light text color */
+        }
+
+        header {
+            background-color: #1f1f3a; /* Darker header background */
+            padding: 20px;
+            color: #ffffff;
+            text-align: center;
+            font-size: 1.8rem;
+            text-shadow: 0 0 10px #5d5dff, 0 0 20px #3232ff;
+        }
+
+        /* Search bar styling */
+        .search-container {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            margin: 30px auto;
+            max-width: 600px;
+        }
+
+        .search-input {
+            width: 100%;
+            max-width: 500px;
+            padding: 16px;
+            font-size: 18px;
+            border: 1px solid #444;
+            border-radius: 24px;
+            outline: none;
+            background-color: #1f1f3a;
+            color: #e0e0ff;
+            box-shadow: 0 0 10px rgba(93, 93, 255, 0.3);
+            margin-bottom: 20px;
+        }
+
+        .search-input:focus {
+            border-color: #5d5dff;
+            box-shadow: 0 0 15px rgba(93, 93, 255, 0.5);
+        }
+
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #1f1f3a;
+            min-width: 200px;
+            box-shadow: 0 0 15px rgba(93, 93, 255, 0.3);
+            z-index: 1;
+            border-radius: 8px;
+            top: 40px;
+            text-align: left;
+        }
+
+        .dropdown-content button {
+            padding: 10px;
+            width: 100%;
+            background-color: #1f1f3a;
+            border: none;
+            cursor: pointer;
+            text-align: left;
+            color: #e0e0ff;
+            border-radius: 8px;
+            transition: background-color 0.3s;
+        }
+
+        .dropdown-content button:hover {
+            background-color: #5d5dff;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Product styling */
+        .product-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin: 30px;
+        }
+
+        .product-card {
+            width: 220px;
+            padding: 20px;
+            background-color: #1f1f3a;
+            border: 1px solid #444;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 0 15px rgba(93, 93, 255, 0.3);
+            color: #e0e0ff;
+        }
+
+        .product-card h2 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: #5d5dff;
+        }
+
+        .product-card p {
+            font-size: 0.9rem;
+            color: #b8c6ff;
+        }
+
+        .footer {
+            margin-top: 30px;
+            text-align: center;
+            color: #b8c6ff;
+            font-size: 14px;
+            padding: 20px;
+            background-color: #1f1f3a;
+            border-top: 1px solid #444;
+        }
+
+        .footer a {
+            color: #5d5dff;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Search and Sort Products</h1>
+    </header>
+
+    <div class="search-container">
+        <!-- Search Input -->
+        <input type="text" id="search-input" class="search-input" placeholder="Enter your search query">
+
+        <!-- Dropdown for external search -->
+        <div class="dropdown">
+            <button class="search-input">Search Options</button>
+            <div class="dropdown-content">
+                <button onclick="performSearch('amazon')">Amazon</button>
+                <button onclick="performSearch('flipkart')">Flipkart</button>
+                <button onclick="performSearch('myntra')">Myntra</button>
+                <button onclick="performSearch('meesho')">Meesho</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="product-list">
+        <div class="product-card">
+            <img src="https://via.placeholder.com/150" alt="Apple" style="width: 100%; border-radius: 10px; margin-bottom: 10px;">
+            <h2>Apple</h2>
+            <p>Fresh apples from the farm</p>
+        </div>
+        <div class="product-card">
+            <img src="https://via.placeholder.com/150" alt="Banana" style="width: 100%; border-radius: 10px; margin-bottom: 10px;">
+            <h2>Banana</h2>
+            <p>Ripe bananas ready to eat</p>
+        </div>
+        <div class="product-card">
+            <img src="https://via.placeholder.com/150" alt="Grapes" style="width: 100%; border-radius: 10px; margin-bottom: 10px;">
+            <h2>Grapes</h2>
+            <p>Sweet and juicy grapes</p>
+        </div>
+        <div class="product-card">
+            <img src="https://via.placeholder.com/150" alt="Orange" style="width: 100%; border-radius: 10px; margin-bottom: 10px;">
+            <h2>Orange</h2>
+            <p>Freshly picked oranges</p>
+        </div>
+        <div class="product-card">
+            <img src="https://via.placeholder.com/150" alt="Mango" style="width: 100%; border-radius: 10px; margin-bottom: 10px;">
+            <h2>Mango</h2>
+            <p>Delicious and ripe mangoes</p>
+        </div>
+        <div class="product-card">
+            <img src="https://via.placeholder.com/150" alt="Pineapple" style="width: 100%; border-radius: 10px; margin-bottom: 10px;">
+            <h2>Pineapple</h2>
+            <p>Fresh and tangy pineapples</p>
+        </div>
+        <div class="product-card">
+            <img src="https://via.placeholder.com/150" alt="Watermelon" style="width: 100%; border-radius: 10px; margin-bottom: 10px;">
+            <h2>Watermelon</h2>
+            <p>Juicy and refreshing watermelons</p>
+        </div>
+        <div class="product-card">
+            <img src="https://via.placeholder.com/150" alt="Strawberry" style="width: 100%; border-radius: 10px; margin-bottom: 10px;">
+            <h2>Strawberry</h2>
+            <p>Sweet and fresh strawberries</p>
+        </div>
+        <div class="product-card">
+            <img src="https://via.placeholder.com/150" alt="Blueberry" style="width: 100%; border-radius: 10px; margin-bottom: 10px;">
+            <h2>Blueberry</h2>
+            <p>Rich and flavorful blueberries</p>
+        </div>
+        <div class="product-card">
+            <img src="https://via.placeholder.com/150" alt="Peach" style="width: 100%; border-radius: 10px; margin-bottom: 10px;">
+            <h2>Peach</h2>
+            <p>Soft and sweet peaches</p>
+        </div>
+        <div class="product-card">
+            <img src="https://via.placeholder.com/150" alt="Kiwi" style="width: 100%; border-radius: 10px; margin-bottom: 10px;">
+            <h2>Kiwi</h2>
+            <p>Exotic and tangy kiwis</p>
+        </div>
+        <div class="product-card">
+            <img src="https://via.placeholder.com/150" alt="Cherry" style="width: 100%; border-radius: 10px; margin-bottom: 10px;">
+            <h2>Cherry</h2>
+            <p>Fresh and juicy cherries</p>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>© 2024 Search Bar | <a href="#">Privacy</a> | <a href="#">Terms</a></p>
+    </div>
+
+    <script>
+        // Function to filter displayed products
+        document.getElementById('search-input').addEventListener('input', function() {
+            const query = this.value.toLowerCase();
+            const productCards = document.querySelectorAll('.product-card');
+            productCards.forEach(card => {
+                const productTitle = card.querySelector('h2').innerText.toLowerCase();
+                card.style.display = productTitle.includes(query) ? 'block' : 'none';
+            });
+        });
+
+        // Function to redirect to selected platform
+        function performSearch(platform) {
+            const query = document.getElementById('search-input').value.trim();
+            if (!query) {
+                alert("Please enter a search query.");
+                return;
+            }
+
+            let url = '';
+            switch (platform) {
+                case 'amazon': url = `https://www.amazon.com/s?k=${encodeURIComponent(query)}`; break;
+                case 'flipkart': url = `https://www.flipkart.com/search?q=${encodeURIComponent(query)}`; break;
+                case 'myntra': url = `https://www.myntra.com/search?q=${encodeURIComponent(query)}`; break;
+                case 'meesho': url = `https://www.meesho.com/search?q=${encodeURIComponent(query)}`; break;
+                default: alert("Invalid platform selected."); return;
+            }
+            window.open(url, '_blank');
+        }
+    </script>
+</body>
+</html>

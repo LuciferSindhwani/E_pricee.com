@@ -1,0 +1,95 @@
+/* General body styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+/* Search container styles */
+.search-container {
+    display: flex;
+    align-items: center;
+    position: fixed; /* Fixed position on the left */
+    top: 50%;
+    left: -300px; /* Initially off-screen */
+    transform: translateY(-50%); /* Center vertically */
+    height: 60px;
+    transition: left 0.4s ease-in-out; /* Slide-in effect */
+    z-index: 1000; /* Ensure the search bar is on top of other elements */
+}
+
+/* Active state when the search bar is shown */
+.search-container.active {
+    left: 0; /* Slide to the left side of the screen */
+}
+
+/* Button styles for the search button */
+.search-button {
+    background: rgba(255, 255, 255, 0.3);
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.4s ease-in-out, margin-left 0.4s ease-in-out, background 0.3s ease;
+    position: relative;
+    z-index: 1;
+}
+
+/* Hover effect for the search button */
+.search-button:hover {
+    background: rgba(255, 255, 255, 0.5);
+    transform: scale(1.1); /* Slightly increase the size on hover */
+}
+
+/* Icon within the search button */
+.search-button svg {
+    fill: #fff;
+    width: 24px;
+    height: 24px;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Rotate icon when hovering the search button */
+.search-button:hover svg {
+    transform: rotate(90deg);
+}
+
+/* Input field styles */
+.search-input {
+    width: 0;
+    opacity: 0;
+    padding: 0;
+    font-size: 18px;
+    border: none;
+    border-radius: 30px;
+    outline: none;
+    background: rgba(255, 255, 255, 0.8);
+    color: #333;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    transition: width 0.4s ease-in-out, opacity 0.4s ease-in-out, padding 0.4s ease-in-out;
+}
+
+/* Active state for the input field (shows when search bar is visible) */
+.search-container.active .search-input {
+    width: 300px;
+    opacity: 1;
+    padding: 10px 20px;
+}
+
+/* Button margin when the search input is active */
+.search-container.active .search-button {
+    margin-left: 10px;
+}
+
+/* Placeholder text inside the search input */
+.search-input::placeholder {
+    color: #aaa;
+    font-style: italic;
+}

@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <link rel="stylesheet" href="logo.css">
+ <link rel="stylesheet" href="menu.css">
+ <link rel="stylesheet" href="hero.css">
+ <link rel="stylesheet" href="serachbar.css">
+ <link rel="stylesheet" href="nav.css">
+    <style>
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: black;
+    color: #fff;
+    padding-bottom: 50px;
+}
+
+/* Header */
+header {
+    background-color: #2d2b2f;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+header .logo {
+    font-size: 30px;
+    color: white;
+    font-weight: bold;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+/* Hero Section */
+.hero {
+            text-align: center;
+            padding:0;
+            background-image: url("");
+            background-size: cover;
+            background-position: center;
+            color: white;
+            background-color: black;
+        }
+
+        .hero h1 {
+            font-size: 50px;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .hero p {
+            font-size: 22px;
+            margin-bottom: 40px;
+        }
+
+        .hero .btn {
+            padding: 15px 40px;
+            background-color: white;
+            color: #00695c;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            border-radius: 30px;
+            transition: background-color 0.3s ease;
+        }
+
+        .hero .btn:hover {
+            background-color: #004d40;
+            color: white;
+        }
+
+/* Categories */
+#categories {
+    padding: 60px 20px;
+    background-color: #1e1e1e;
+}
+
+#categories h2 {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 34px;
+}
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.category-card {
+    background-color: #272727;
+    border-radius: 15px;
+    overflow: hidden;
+    text-align: center;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.category-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(255, 105, 180, 0.5);
+    border: 2px solid #ff0077;
+}
+
+.category-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.category-card a {
+    display: block;
+    padding: 15px;
+    font-size: 20px;
+    color: #ff0077;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Product Container */
+.product-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.product-card {
+    background: linear-gradient(145deg, #2b2b2b, #383838);
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4), 0 0 15px rgba(255, 0, 119, 0.2);
+    width: 250px;
+    margin: 20px;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, border 0.3s ease-in-out;
+    border: 2px solid transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+.product-card:hover {
+    transform: scale(1.05) translateY(-10px);
+    border: 2px solid #ff0077;
+    box-shadow: 0 8px 20px rgba(255, 0, 119, 0.6), 0 12px 25px rgba(87, 0, 255, 0.4);
+}
+
+.product-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255, 0, 119, 0.2), rgba(87, 0, 255, 0.2));
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+    border-radius: 15px;
+}
+
+.product-card:hover::before {
+    opacity: 1;
+}
+
+.product-card img {
+    max-width: 100%;
+    height: auto;
+    border-bottom: 2px solid #444;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    position: relative;
+    z-index: 2;
+    transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+.product-card:hover img {
+    transform: scale(1.1);
+    filter: brightness(1.2);
+}
+
+.product-card h3 {
+    font-size: 20px;
+    color: #ff0077;
+    margin-bottom: 10px;
+    z-index: 2;
+    position: relative;
+}
+
+.product-card ul {
+    list-style: none;
+    padding: 0;
+    z-index: 2;
+    position: relative;
+}
+
+.product-card ul li {
+    background: #444;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 8px 0;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.product-card ul li:hover {
+    background: #ff0077;
+    transform: scale(1.05);
+    color: white;
+}
+
+.product-card a {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 20px;
+    font-size: 18px;
+    text-decoration: none;
+    color: white;
+    background: linear-gradient(135deg, #ff0077, #5700ff);
+    border-radius: 30px;
+    transition: background 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 10px rgba(255, 0, 119, 0.5), 0 6px 15px rgba(87, 0, 255, 0.4);
+    position: relative;
+    z-index: 2;
+}
+
+.product-card a:hover {
+    background: linear-gradient(135deg, #5700ff, #ff0077);
+    transform: scale(1.1);
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #1e1e1e;
+    color: white;
+    margin-top: 25px;
+}
+
+    </style>
+</head>
+<body>
+ 
+    <header>
+        <nav>
+            <button class="menu-button"><img src="menu.png" height="25px"  width="25px"></button>
+            <div class="overlay"></div>
+    <ul class="menu">
+        <li><a href="#home"></a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+
+   
+        </nav>
+        
+        <div class="typing-container">E_pricee</div>
+        
+        <nav>
+            
+            <ul>
+                <li><div class="search-container">
+                    <input type="text" class="search-input" placeholder="Type to search...">
+                    <button class="search-button" id="searchButton" aria-label="Search">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001a1 1 0 0 0 .196 1.316l3.85 3.85a1 1 0 0 0 1.415-1.415l-3.85-3.85a1 1 0 0 0-1.316-.196zm-5.742 1.606a5.5 5.5 0 1 1 0-11 5.5 5.5 0 0 1 0 11z"/>
+                        </svg>
+                    </button>
+                </div></li>
+                <li><a href="new.html">Login</a></li>
+                <li><a href="electronics.html" class="electric-button">Electronics</a></li>
+                <li><a href="fashion.html" class="fashion-button">Fashion</a></li>
+                <li><a href="home-appliances.html" class="home-appliance-button">Home Appliances</a></li>
+                <li><a href="beauty.html" class="">Beauty</a></li>
+                <li><a href="cart.html">Cart</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <!-- Image Container -->
+   <div class="image-container">
+       <img id="current-image" src="https://source.unsplash.com/1600x900/?nature" alt="Image">
+   </div>
+
+   <!-- Button Controls -->
+   <div class="button-container">
+       <button class="button" id="back-btn">&larr;</button>
+       <button class="button" id="next-btn">&rarr;</button>
+   </div>
+
+   </section>
+
+
+    <!-- Categories Section -->
+    <section id="categories">
+        <h2>Shop by Category</h2>
+        <div class="category-grid">
+            <div class="category-card">
+                    <img src="electronics.jpg" alt="Electronics">
+                    <a href="electronics.html">Electronics</a>
+            </div>
+            <div class="category-card">
+                <img src="fashion.jpg" alt="Fashion">
+                <a href="fashion.html">Fashion</a>
+            </div>
+            <div class="category-card">
+                <img src="home appliences.jpeg" alt="Home Appliances">
+                <a href="home-appliances.html">Home Appliances</a>
+            </div>
+            <div class="category-card">
+                <img src="beauty.jpeg" alt="Beauty">
+                <a href="beauty.html">Beauty</a>
+            </div>
+            <div class="category-card">
+                <img src="sports.jpeg" alt="Beauty">
+                <a href="sports.html">Sports section</a>
+            </div>
+        </div>
+       
+    </section>
+    <h2 class="h2">Most Veiwed Products</h2>
+    <section class="product-container">
+        
+        
+        <div class="product-card">
+            <a href="https://www.ahhelmets.in/mt-thunder3-pro-helmets/4457-mt-thunder3-pro-isle-of-man-matt-red-helmet.html">
+            <img src="https://powersports.in/cdn/shop/files/MtThunder3ProIsleOfManMattRed1.jpg?v=1684917718&width=1800" alt="Laptop">
+            <h2>helmet</h2>
+            <p>Price Comparison:</p>
+            <ul>
+                <li>Amazon: $999</li>
+                <li>Flipkart: $950</li>
+                <li>Meesho: $970</li>
+            </ul>
+        </a>
+        </div>
+
+        
+        <div class="product-card">
+            <a href="https://www.indiamart.com/proddetail/men-s-double-pocket-shirt-27607778130.html">
+            <img src="https://5.imimg.com/data5/SELLER/Default/2022/11/BK/QH/HA/75875420/men-s-double-pocket-shirt-1000x1000.jpeg" alt="Smartphone">
+            <h2>shirt</h2>
+            <p>Price Comparison:</p>
+            <ul>
+                <li>Amazon: $699</li>
+                <li>Flipkart: $680</li>
+                <li>Meesho: $690</li>
+            </ul>
+        </a>
+        </div>
+
+        <!-- Product 3 -->
+        <div class="product-card">
+            <a href="https://thebanyantee.com/products/lucifer-t-shirt-tv-lucifer-what">
+            <img src="https://thebanyantee.com/cdn/shop/files/Lucifer-T-shirt-What-Would-Lucifer-Do_e22ece7e-c4fc-4bd0-8936-424487aa8f71.jpg?v=1717493759" alt="Headphones">
+            <h2>T Shirt</h2>
+            <p>Price Comparison:</p>
+            <ul>
+                <li>Amazon: $199</li>
+                <li>Flipkart: $180</li>
+                <li>Meesho: $190</li>
+            </ul>
+        </a>
+        </div>
+
+        <!-- Product 4 -->
+        <div class="product-card">
+            <a href="https://www.flipkart.com/axe-style-black-mens-watch-stainless-steel-day-date-branded-wrist-boys-analog-men/p/itmf3zh3yahzjrav">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJLr0j8MizfcvRO3DTXWpUpS-ecLt6qRn3LQ&s" alt="Smartwatch">
+            <h2>Jeans</h2>
+            <p>Price Comparison:</p>
+            <ul>
+                <li>Amazon: $299</li>
+                <li>Flipkart: $280</li>
+                <li>Meesho: $290</li>
+            </ul>
+        </a>
+        </div>
+
+        <div class="product-card">
+            <a href="https://www.amazon.in/gauma-Multipurpose-Everyday-Trousers-Bottle-Green-Large/dp/B0D8Y2Z52R/ref=sr_1_3_sspa?crid=3UJPO0CK376F1&dib=eyJ2IjoiMSJ9.dnw8iJTVlVqQ3m0D0_8VeOdL6Zg2zy7Ey7PUhPWK0ReysK3U8NHlGM0LmWJuBmzqNpcHJIh1Ar0I5D_HISAJzUgGX8HMLS9bCLbFoIHOVPV9N-4diF-26O7s1PDNiJefLOgRCdhhKZDaYWwXttTO_07Bw35toVv4IyOdlWpR5yF-qNPhC_W3zncHV3qMHl8yyhuek5TQly84mS550ipq7GqrUCG3p7xqrxpWOaZKmkJWx3FatvevaSIS_jsMQAfQiT_MLZcoB-rE_D7rGykWY-XMEI-ZN-gKucrea_3MBDk.TwJjtdjFvwj873qNSgHQj2jjP2G3EOSRh3X7wJbRjd0&dib_tag=se&keywords=lower%2Bfor%2Bman&qid=1730660910&sprefix=lower%2Caps%2C247&sr=8-3-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&th=1&psc=1">
+            <img src="https://m.media-amazon.com/images/I/616Hz8vRuUL._SY879_.jpg" alt="Laptop">
+            <h2>Lower</h2>
+            <p>Price Comparison:</p>
+            <ul>
+                <li>Amazon: $999</li>
+                <li>Flipkart: $950</li>
+                <li>Meesho: $970</li>
+            </ul>
+        </a>
+        </div>
+
+        <div class="product-card">
+            <a href="https://www.flipkart.com/limestone-day-date-functioning-steel-strap-new-quartz-analog-watch-men/p/itma592f9ae33f89?pid=WATGYZFXPANB6F7G&lid=LSTWATGYZFXPANB6F7GEPLMX0&marketplace=FLIPKART&q=watch&store=r18%2Ff13&srno=s_1_2&otracker=search&otracker1=search&fm=Search&iid=en_NfjzTq86A1Ro2kdSiSNzIKXZaOmAWU31FdppVWdokufyBSfG-YGHSMB-iPRZMsVo5Y_9UfadFaiWE9rJOfsQxA%3D%3D&ppt=sp&ppn=sp&qH=d2974c96dc96b3f3">
+                <img src="https://rukminim2.flixcart.com/image/612/612/xif0q/watch/2/d/p/-original-imagrgwwjpbf8zhg.jpeg?q=70" alt="Laptop">
+                <h2>Watch</h2>
+                <p>Price Comparison:</p>
+                <ul>
+                    <li>Amazon: $999</li>
+                    <li>Flipkart: $950</li>
+                    <li>Meesho: $970</li>
+                </ul>
+                     
+            </a>
+                   </div>
+
+        <div class="product-card">
+            <a href="https://www.amazon.in/Cello-Steel-X-Insulated-Plastic-Turquoise/dp/B0BVVQNH6R/ref=sr_1_8?crid=297E6VZ2YGBRV&dib=eyJ2IjoiMSJ9.uQ0hlNC2AoBGzcHYdcRwsND0JVx861Xru1-of-oTHEt_Y19YvQuW9jIF4_2Qu82awfx5iIY6Un0N-QYO8V9DEZkzZBo755rW4lkrUhB1J2AZgmrLcEb_68Hoa-DVTFf4DEJt9v5Pa4mw0lUo00tDIaPaGXu5EHm8us5zp6Bf_t2IE9XwpYZbiNfajL4T6nKFN7nzALrgqIXc60qeAYHUa-2opEzbrxNBn7wLDEVdvNrmMSAVvm4liUcYO1t7JKtYKTokm489ste6aRnK-QsAxCg8uvM4Q4_y884UVO6bK2g.NyFsr0sq4CaUn2WOznURaZ4ZJ7ES77aU3QuTCAIdvGQ&dib_tag=se&keywords=bottle&qid=1730661423&sprefix=bottle%2B%2Caps%2C255&sr=8-8&th=1">
+            <img src="https://m.media-amazon.com/images/I/71k81fIHRAL._SL1500_.jpg" alt="Laptop">
+            <h2>Bottle</h2>
+            <p>Price Comparison:</p>
+            <ul>
+                <li>Amazon: $999</li>
+                <li>Flipkart: $950</li>
+                <li>Meesho: $970</li>
+            </ul>
+        </a>
+        </div>
+
+        <div class="product-card">
+            <a href="https://www.meesho.com/super-duper-color-combo-nail-polish/p/21fz4w">
+            <img src="https://images.meesho.com/images/products/123357344/mroov_512.webp" alt="Laptop">
+            <h2>paint</h2>
+            <p>Price Comparison:</p>
+            <ul>
+                <li>Amazon: $999</li>
+                <li>Flipkart: $950</li>
+                <li>Meesho: $970</li>
+            </ul>
+        </a>
+        </div>
+
+        <div class="product-card">
+            <a href="https://www.flipkart.com/yonex-astrox-attack-9-white-strung-badminton-racquet/p/itmae7be17cece01?pid=RAQGWYYAVSRZRU98&lid=LSTRAQGWYYAVSRZRU98OICRYC&marketplace=FLIPKART&q=racket&store=abc%2Fegs%2F5wq&srno=s_1_7&otracker=search&otracker1=search&fm=Search&iid=fb9a2c2b-a4c4-4d55-a355-d12cf8fbf4b2.RAQGWYYAVSRZRU98.SEARCH&ppt=sp&ppn=sp&ssid=tsqdgt4hio0000001730662308169&qH=98eebfa0127afa6c">
+            <img src="https://rukminim2.flixcart.com/image/612/612/xif0q/racquet/w/x/p/-original-imagwmzggz3zwyf9.jpeg?q=70" alt="Laptop">
+            <h2>Racket</h2>
+            <p>Price Comparison:</p>
+            <ul>
+                <li>Amazon: $999</li>
+                <li>Flipkart: $950</li>
+                <li>Meesho: $970</li>
+            </ul>
+        </a>
+        </div>
+
+        <div class="product-card">
+            <a href="https://www.amazon.in/Cricket-Popular-Willow-Tennis-Plastic/dp/B0CQ4YPTYH/ref=sr_1_2_sspa?crid=110MKBOONDU2I&dib=eyJ2IjoiMSJ9.PlorZRZtr4ColB7gGtO6q5Q8MFnkGZ2AiIdAkmnPp9szOkL28bTi2yKC4kVT2F6qRG4yDGAyz7aRo4uD8Fn-GS08e3Oficd9y0tKgtNPRYipc3B4MUZ7kIdSQFq-vQEMe5LLICrqmMztqpt0kDwvLW0A6gK4HHoeicWx3VVBW9nM5KeGVrQJ2zUu7PqDZR8kitCyGsRAUbLI1nzaBQ7J7ZVqv2_w6K1bV7pCOeNsh0DK32IARoPdca5sZx4ZL0RjNOmbLrAKZfNIXMWPXckpREc5zFdi7GxLadQHLVCPuwQ.j6eZ1T_Kth_YGwyxxK4VzYobxyDxl30Qqk8ynqS1ays&dib_tag=se&keywords=bat&qid=1730662420&sprefix=bat%2Caps%2C261&sr=8-2-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&th=1">
+            <img src="https://m.media-amazon.com/images/I/41jKY3k2MPL._SY300_SX300_QL70_FMwebp_.jpg" alt="Laptop">
+            <h2>Bat</h2>
+            <p>Price Comparison:</p>
+            <ul>
+                <li>Amazon: $999</li>
+                <li>Flipkart: $950</li>
+                <li>Meesho: $970</li>
+            </ul>
+        </a>
+
+        </div>
+
+        
+        <div class="product-card">
+            <a href="https://www.amazon.in/Refurbished-HP-Ultra-slim-Computer-Speakers/dp/B0DD47WKF4/ref=sr_1_3?crid=EZ0PGSZ1OYIK&dib=eyJ2IjoiMSJ9.DKbZEty4Td9kO5vWLZtjvHJUvdwXU2_u6CQp012YWkRmK5QFu4cYwbivCow-UhVFRo2_drhKJqtGLhJVTvQTQHIFeGqrAjd9T7ALTj27J1iLmSyj-f5WRuKfabG6afSgDUV6bHSwjtOJ-7YHGd7IKJ2k5k6f0eWZw3DSK7fx1farFN9rgY8pk5osI_1Ysr2NYCFcZkYn-ZV-ZfSX93v71qrGac8YoHx5EEjQluA8Tu8.uyvb28HEWUqTXjW0zMd1ERKYK4oOvk7LDOOFSfWM4OE&dib_tag=se&keywords=computer&qid=1730662705&sprefix=computer%2Caps%2C662&sr=8-3">
+            <img src="https://m.media-amazon.com/images/I/41ojuTGCfzL._SX300_SY300_QL70_FMwebp_.jpg" alt="Smartphone">
+            <h2>Computer</h2>
+            <p>Price Comparison:</p>
+            <ul>
+                <li>Amazon: $699</li>
+                <li>Flipkart: $680</li>
+                <li>Meesho: $690</li>
+            </ul>
+        </a>
+        </div>
+
+        <!-- Product 3 -->
+        <div class="product-card">
+            <a href="https://www.flipkart.com/raspberry-pi-4-model-b-8gb-ram-motherboard/p/itmd1b2af5cf5d49?pid=MBDFVF9YQUBC53XF&lid=LSTMBDFVF9YQUBC53XFA6JOUK&marketplace=FLIPKART&q=raspberry+pi+4&store=6bo%2Fg0i%2Fy7i&srno=s_1_1&otracker=AS_QueryStore_OrganicAutoSuggest_1_13_na_na_na&otracker1=AS_QueryStore_OrganicAutoSuggest_1_13_na_na_na&fm=search-autosuggest&iid=58d2242a-92a5-437e-8a76-d89f275c66e7.MBDFVF9YQUBC53XF.SEARCH&ppt=sp&ppn=sp&ssid=j8608e44bk0000001730662836997&qH=35cab3e6085d20d2">
+            <img src="https://rukminim2.flixcart.com/image/612/612/xif0q/motherboard/w/g/a/4-model-b-4gb-ram-raspberry-original-imafvfvcxwxehhth.jpeg?q=70" alt="Headphones">
+            <h2>Rasberry pi 4</h2>
+            <p>Price Comparison:</p>
+            <ul>
+                <li>Amazon: $199</li>
+                <li>Flipkart: $180</li>
+                <li>Meesho: $190</li>
+            </ul>
+        </a>
+        </div>
+
+        <!-- Product 4 -->
+        <div class="product-card">
+            <a href="https://www.meesho.com/homestyle-potato-chips/p/7b1nvr">
+            <img src="https://images.meesho.com/images/products/441816615/9vuos_512.webp" alt="Smartwatch">
+            <h2>Chips</h2>
+            <p>Price Comparison:</p>
+            <ul>
+                <li>Amazon: $299</li>
+                <li>Flipkart: $280</li>
+                <li>Meesho: $290</li>
+            </ul>
+        </a>
+        </div>
+
+        <div class="product-card">
+            <a href="https://www.meesho.com/heoluix-emergency-inverter-bulb-12w-with-long-lasting-battery-backup-up-to-4hrpack-of-2/p/6r8vfb">
+            <img src="https://images.meesho.com/images/products/408560663/yib3w_512.webp" alt="Laptop">
+            <h2>Bulb</h2>
+            <p>Price Comparison:</p>
+            <ul>
+                <li>Amazon: $999</li>
+                <li>Flipkart: $950</li>
+                <li>Meesho: $970</li>
+            </ul>
+        </a>
+        </div>
+
+        <div class="product-card">
+            <a href="https://www.amazon.in/Lalitha-Sensor-Module-Kit-Arduuino/dp/B0DHXVGPDC/ref=sr_1_1_sspa?crid=6NGCV5LT09ZO&dib=eyJ2IjoiMSJ9.7uJjUzFcj1iIQ7VYWi2xuUs8SDgXk6Obuual0gBYRt90ZYiXeh9pdPJ7Y2QnWD5tPwRXI0TNVQdbrtuV7zDD00Hg9OqEkF4J2SinWKI4gt6VqcAWEtN2UDiWx2mozM8Ejjq1uoNW5Ds9KCKel4z3u6IbmfrxY9rsEzz4Wkg_MF82IC3Qk5a8BX1g9fMoxAFA_tW10wEe1ct6xMQU1GY7EPmqlcC7Iqmi1NC17U9NlauwmT1QtvlaTDL0pX0hUNOr33Jx9agRx_Pjhruuvxz9HamDDu-5mp5gxBL52bFrRZM.vLlfeVZXp9IGqIT7vFzvoZQgsbxAJqMH1fBtszdHxNM&dib_tag=se&keywords=sensor&qid=1730663128&sprefix=sensor+%2Caps%2C248&sr=8-1-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&psc=1">
+            <img src="https://m.media-amazon.com/images/I/51KKavvdOOL._SY445_SX342_QL70_FMwebp_.jpg" alt="Laptop">
+            <h2>Sensor</h2>
+            <p>Price Comparison:</p>
+            <ul>
+                <li>Amazon: $999</li>
+                <li>Flipkart: $950</li>
+                <li>Meesho: $970</li>
+            </ul>
+        </a>
+        </div>
+
+
+
+
+    </section>
+
+    
+   
+
+
+    
+    <div id="backfoot"><h2>Best Price Comparison Website in India</h2>
+        <p class="para">Searching for your favourite products at the best possible prices? At pricee.com we give you easy access to the best deals that can help you save more money while shopping.
+         <br>
+         Shortlisting, filtering, and researching takes away a lot of time, and when you have finally decided on what you want to buy, it can get cumbersome to find the best deals on that particular product. With <a href="http://" target="_blank" rel="noopener noreferrer">Amazon</a>, <a href="http://" target="_blank" rel="noopener noreferrer">flipkart</a>,<a href="http://" target="_blank" rel="noopener noreferrer">myntra</a> , <a href="http://" target="_blank" rel="noopener noreferrer">paytm</a>and other similar platforms offering varied discounts, it can also get tough to fish out the best offers. That's when you are going to need a platform like pricee.com  a one stop solution for online price comparisons across multiple product categories.
+     </p> 
+         <br>
+         
+        <h2> How to Compare price online?</h2><p class="para">
+         It's simple! Simply visit www.pricee.com and search for the product you are looking for. The website will throw a pool of results for your search; here you will see the best prices available online for that product, so you can compare prices online, click on your choice and make the purchase.
+         
+        </p>
+        <br>
+         <h2>
+             Compare Price and Shop Online for your Favorite Category Products </h2><p class="para"> You could be shopping for mobile phones, laptops, refrigerators, air conditioners, air purifiers, television or anything else; we always have them listed with us. Perhaps the most user-friendly search engine, pricee.com tells you which websites is a particular product available on and what are the variants on offer. Pricee.com also gives a quick overview of specs, user reviews, and their prices. Additionally, you can also set a custom price drop alert for your favourite products and receive them on your e-mail, so you will know when there is a 5%, 10% or 15% price drop.</p>
+        <br>
+         <h2>
+             How Do Price Comparison Sites Work?</h2>
+             <p class="para"> Price comparison sites work by dynamically fetching updated prices, features, reviews, descriptions, and all essential information on various products from different e-commerce sites. All this data is then tailored in a structured manner for your easy understanding. So, when you are searching for a product, the price comparison site fetches prices and gives you results using which you can make the best purchase. Many of these price comparison sites allow browser notifications, and many even let you set alerts for price drops.
+         
+                 Download the pricee app for <a class="line" href="#">android</a> and <a class="line" href="#">iOS </a>  devices and access the best offers with ease.</p>
+        </div>
+       
+    <footer>
+        <div id="footer_text1"> download :  <a class="line" href="#">android application </a>| <a class="line" href="#">iOS application</a></div>
+        <div>&copy Copyright Red Pixels Ventures Limited 2023. All rights reserved.</div>
+
+    </footer>
+    <script src="menu.js"></script>
+    <script src="hero.js"></script>
+    <script src="serchbar.js"></script>
+
+</body>
+</html>

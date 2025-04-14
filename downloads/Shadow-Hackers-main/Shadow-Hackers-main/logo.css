@@ -1,0 +1,65 @@
+.typing-container {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 24px;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 3px solid #00ffff; /* Lightning blue color */
+    animation: typing 1s steps(8) infinite, blink 0.6s step-end infinite, lightning 3s infinite;
+    color: #ffffff;
+    text-shadow: 
+        0 0 10px #00ffff,
+        0 0 20px #00ffff,
+        0 0 30px #0077ff,
+        0 0 40px #0077ff;
+}
+
+/* Typing Animation */
+@keyframes typing {
+    0% {
+        width: 0;
+    }
+    75% {
+        width: 8ch; /* Adjust to match the text length */
+    }
+    100% {
+        width: 8ch; /* Hold the text */
+    }
+}
+
+/* Cursor Blinking Animation */
+@keyframes blink {
+    from {
+        border-right-color: #00ffff;
+    }
+    to {
+        border-right-color: transparent;
+    }
+}
+
+/* Lightning Effect Animation */
+@keyframes lightning {
+    0%, 15%, 25%, 50%, 75%, 100% {
+        text-shadow: 
+            0 0 10px #00ffff,
+            0 0 20px #00ffff,
+            0 0 30px #0077ff,
+            0 0 40px #0077ff;
+        filter: brightness(1);
+    }
+    5%, 20%, 45%, 60%, 90% {
+        text-shadow: 
+            0 0 20px #00ffff,
+            0 0 30px #00ffff,
+            0 0 50px #0077ff,
+            0 0 70px #00e0ff;
+        filter: brightness(3); /* Simulates a lightning strike flash */
+    }
+    30%, 80% {
+        text-shadow: 
+            0 0 10px #ffffff,
+            0 0 20px #ffffff,
+            0 0 30px #00ffff,
+            0 0 50px #0077ff;
+        filter: brightness(2);
+    }
+}

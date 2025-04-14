@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logout</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #7e9493, #a1c6c3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: white;
+        }
+
+        .logout-container {
+            text-align: center;
+            background: white;
+            color: #2E3135;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 1rem;
+            color: white;
+            background: #1845ad;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .button:hover {
+            background: #23a2f6;
+        }
+    </style>
+</head>
+<body>
+    <div class="logout-container">
+        <h1>You are logged out!</h1>
+        <p>Thank you for visiting. We hope to see you again soon!</p>
+        <a href="login1.html" class="button">Login Again</a>
+    </div>
+
+    <script>
+        // Simulating clearing user session on logout
+        window.onload = function() {
+            localStorage.removeItem('currentUser');
+            console.log('User session cleared.');
+        };
+    </script>
+</body>
+</html>

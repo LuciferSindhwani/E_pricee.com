@@ -1,0 +1,81 @@
+.search-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+    height: 60px;
+}
+
+.search-button {
+    background: rgba(0, 119, 255, 0.3); /* Blue tint */
+    border: none;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 
+        0 0 10px rgba(0, 119, 255, 0.5),
+        0 0 20px rgba(0, 119, 255, 0.6),
+        0 0 30px rgba(0, 119, 255, 0.8);
+    transition: transform 0.4s ease-in-out, margin-left 0.4s ease-in-out, background 0.3s ease, box-shadow 0.4s ease-in-out;
+    position: relative;
+    z-index: 1;
+}
+
+.search-button:hover {
+    background: rgba(0, 119, 255, 0.5); /* Brighter blue */
+    transform: scale(1.1);
+    box-shadow: 
+        0 0 20px rgba(0, 119, 255, 0.8),
+        0 0 30px rgba(0, 119, 255, 1),
+        0 0 40px rgba(0, 119, 255, 1);
+}
+
+.search-button svg {
+    fill: #fff;
+    width: 24px;
+    height: 24px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.search-button:hover svg {
+    transform: rotate(90deg);
+}
+
+.search-input {
+    width: 0;
+    opacity: 0;
+    padding: 0;
+    font-size: 18px;
+    border: none;
+    border-radius: 30px;
+    outline: none;
+    background: rgba(0, 119, 255, 0.1); /* Subtle blue background */
+    color: #fff;
+    box-shadow: 
+        0 0 10px rgba(0, 119, 255, 0.4),
+        0 0 15px rgba(0, 119, 255, 0.5);
+    transition: width 0.4s ease-in-out, opacity 0.4s ease-in-out, padding 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+}
+
+.search-container.active .search-input {
+    width: 300px;
+    opacity: 1;
+    padding: 10px 20px;
+    box-shadow: 
+        0 0 15px rgba(0, 119, 255, 0.6),
+        0 0 25px rgba(0, 119, 255, 0.8),
+        0 0 30px rgba(0, 119, 255, 1);
+}
+
+.search-container.active .search-button {
+    margin-left: 10px;
+}
+
+.search-input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+    font-style: italic;
+}

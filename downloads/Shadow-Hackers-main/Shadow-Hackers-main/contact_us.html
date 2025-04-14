@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Price Comparison</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #0a0b1a;
+            color: #e0e0ff;
+            background-image: 
+                radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px),
+                radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 30px),
+                radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 40px);
+            background-size: 550px 550px, 350px 350px, 250px 250px;
+            background-position: 0 0, 40px 60px, 130px 270px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+        }
+        
+        .container {
+            max-width: 1000px;
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            gap: 30px;
+            margin-bottom: 2rem;
+        }
+        
+        @media (max-width: 900px) {
+            .container {
+                flex-direction: column;
+            }
+        }
+        
+        .contact-form {
+            flex: 1;
+            background-color: rgba(16, 24, 52, 0.8);
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(89, 111, 255, 0.3), 
+                        0 0 60px rgba(65, 39, 120, 0.2),
+                        inset 0 0 15px rgba(137, 162, 255, 0.3);
+            backdrop-filter: blur(5px);
+            overflow: hidden;
+            position: relative;
+            padding: 2rem;
+        }
+        
+        .contact-info {
+            flex: 1;
+            background-color: rgba(16, 24, 52, 0.8);
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(89, 111, 255, 0.3), 
+                        0 0 60px rgba(65, 39, 120, 0.2),
+                        inset 0 0 15px rgba(137, 162, 255, 0.3);
+            backdrop-filter: blur(5px);
+            overflow: hidden;
+            position: relative;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .stars {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 0 3px #fff, 0 0 5px #fff;
+            animation: twinkle 5s infinite;
+            opacity: 0;
+        }
+        
+        @keyframes twinkle {
+            0% { opacity: 0; }
+            50% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+        
+        .page-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2.5rem;
+            color: #fff;
+            text-shadow: 0 0 5px #5d5dff, 0 0 10px #3232ff;
+        }
+        
+        .subtitle {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            font-weight: normal;
+            font-size: 1.2rem;
+            color: #b8c6ff;
+        }
+        
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: #d0d8ff;
+            border-bottom: 2px solid rgba(93, 93, 255, 0.3);
+            padding-bottom: 0.5rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #d0d8ff;
+            font-weight: bold;
+        }
+        
+        input, textarea, select {
+            width: 100%;
+            padding: 10px 15px;
+            border-radius: 8px;
+            border: 1px solid #2c3e7e;
+            background-color: rgba(23, 29, 58, 0.7);
+            color: #fff;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: #5d5dff;
+            box-shadow: 0 0 0 2px rgba(93, 93, 255, 0.3);
+        }
+        
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .planet {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            position: absolute;
+            z-index: -1;
+        }
+        
+        .planet-1 {
+            background: linear-gradient(145deg, #ce9ffc, #7367f0);
+            top: -30px;
+            right: -30px;
+            box-shadow: 0 0 30px rgba(115, 103, 240, 0.5);
+        }
+        
+        .planet-2 {
+            background: linear-gradient(145deg, #5d5dff, #3d3ddc);
+            bottom: -20px;
+            left: 10%;
+            width: 50px;
+            height: 50px;
+            box-shadow: 0 0 20px rgba(93, 93, 255, 0.6);
+        }
+        
+        .planet-3 {
+            background: linear-gradient(145deg, #ff9966, #ff5e62);
+            bottom: 40%;
+            right: -20px;
+            width: 40px;
+            height: 40px;
+            box-shadow: 0 0 15px rgba(255, 94, 98, 0.5);
+        }
+        
+        button {
+            background: linear-gradient(135deg, #6e8efb, #a777e3);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(110, 142, 251, 0.4);
+            display: block;
+            margin: 2rem auto 0;
+        }
+        
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(110, 142, 251, 0.5);
+        }
+        
+        button:active {
+            transform: translateY(0);
+        }
+        
+        .success-message {
+            display: none;
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(39, 174, 96, 0.2);
+            border-radius: 8px;
+            border: 1px solid #27ae60;
+            margin-top: 1rem;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .contact-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .contact-method {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            border-radius: 8px;
+            background-color: rgba(28, 36, 65, 0.6);
+            transition: all 0.3s ease;
+        }
+        
+        .contact-method:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(93, 93, 255, 0.3);
+        }
+        
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #6e8efb, #a777e3);
+            color: white;
+            font-size: 1.2rem;
+        }
+        
+        .contact-details {
+            flex: 1;
+        }
+        
+        .contact-label {
+            font-size: 0.9rem;
+            color: #b8c6ff;
+            margin-bottom: 0.2rem;
+        }
+        
+        .contact-value {
+            font-size: 1.1rem;
+            color: #fff;
+        }
+        
+        .office-hours {
+            margin-top: auto;
+            padding: 1.5rem;
+            border-radius: 8px;
+            background-color: rgba(28, 36, 65, 0.6);
+        }
+        
+        .hours-title {
+            font-size: 1.2rem;
+            color: #d0d8ff;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid rgba(93, 93, 255, 0.3);
+            padding-bottom: 0.5rem;
+        }
+        
+        .hours-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+        
+        .hours-day {
+            color: #b8c6ff;
+        }
+        
+        .hours-time {
+            color: #fff;
+        }
+        
+        .map-container {
+            height: 200px;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-top: 1.5rem;
+            position: relative;
+            background-color: rgba(28, 36, 65, 0.6);
+        }
+        
+        .map-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #b8c6ff;
+            text-align: center;
+            padding: 1rem;
+        }
+        
+        .floating-asteroids {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        
+        .asteroid {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            box-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+            animation: float 15s linear infinite;
+            opacity: 0.7;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(100%) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.7;
+            }
+            90% {
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(-100%) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        .constellation {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            opacity: 0.3;
+            z-index: -1;
+        }
+        
+        .constellation-line {
+            stroke: rgba(255, 255, 255, 0.5);
+            stroke-width: 1;
+        }
+        
+        .constellation-dot {
+            fill: rgba(255, 255, 255, 0.8);
+        }
+        
+        .solar-system {
+            position: absolute;
+            bottom: 1rem;
+            right: 1rem;
+            width: 100px;
+            height: 100px;
+            opacity: 0.7;
+        }
+        
+        .sun {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: radial-gradient(circle, #ff9500, #ff5e00);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 10px rgba(255, 149, 0, 0.8);
+        }
+        
+        .orbit {
+            position: absolute;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .planet-orbit {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            animation: orbit linear infinite;
+        }
+        
+        .planet-dot {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        @keyframes orbit {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        
+        /* Easter Egg Elements */
+        .ufo {
+            position: fixed;
+            top: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 20px;
+            background: linear-gradient(to bottom, #7367f0, #5d5dff);
+            border-radius: 50%;
+            box-shadow: 0 0 15px rgba(93, 93, 255, 0.7);
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        
+        .ufo-dome {
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 15px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50% 50% 0 0;
+        }
+        
+        .ufo-light {
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 10px;
+            height: 20px;
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.8), transparent);
+            border-radius: 50%;
+            opacity: 0;
+        }
+        
+        .shooting-star {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 3px;
+            background-color: white;
+            border-radius: 50%;
+            box-shadow: 0 0 5px white, 0 0 10px white, 0 0 20px rgba(255, 255, 255, 0.5);
+            pointer-events: none;
+            opacity: 0;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-asteroids" id="asteroidsContainer"></div>
+    <div class="ufo" id="ufo">
+        <div class="ufo-dome"></div>
+        <div class="ufo-light"></div>
+    </div>
+    
+    <h1 class="page-title">Contact Us</h1>
+    <h2 class="subtitle">We're just a cosmic signal away</h2>
+    
+    <div class="container">
+        <div class="contact-form">
+            <h3 class="section-title">Send Us a Message</h3>
+            <div class="planet planet-1"></div>
+            
+            <form id="contactForm" onsubmit="return handleSubmit(event)">
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" name="subject" placeholder="What's this about?" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Your Message</label>
+                    <textarea id="message" name="message" placeholder="Type your message here..." required></textarea>
+                </div>
+                
+                <button type="submit">Send Message</button>
+            </form>
+            
+            <div id="successMessage" class="success-message">
+                Your message has been sent successfully! We'll respond as quickly as light travels through space.
+            </div>
+        </div>
+        
+        <div class="contact-info">
+            <h3 class="section-title">Our Cosmic Coordinates</h3>
+            <div class="planet planet-2"></div>
+            <div class="planet planet-3"></div>
+            
+            <div class="contact-methods">
+                <div class="contact-method">
+                    <div class="contact-icon">✉️</div>
+                    <div class="contact-details">
+                        <div class="contact-label">Email</div>
+                        <div class="contact-value">contact@pricecompare.com</div>
+                    </div>
+                </div>
+                
+                <div class="contact-method">
+                    <div class="contact-icon">📞</div>
+                    <div class="contact-details">
+                        <div class="contact-label">Phone</div>
+                        <div class="contact-value">+1 (555) 123-4567</div>
+                    </div>
+                </div>
+                
+                <div class="contact-method">
+                    <div class="contact-icon">🏢</div>
+                    <div class="contact-details">
+                        <div class="contact-label">Address</div>
+                        <div class="contact-value">123 Cosmic Lane, Star City, Universe 42</div>
+                    </div>
+                </div>
+            </div>
+            
+        
+            
+            <div class="office-hours">
+                <h4 class="hours-title">Office Hours</h4>
+                <div class="hours-row">
+                    <span class="hours-day">Monday - Friday</span>
+                    <span class="hours-time">9:00 AM - 6:00 PM</span>
+                </div>
+                <div class="hours-row">
+                    <span class="hours-day">Saturday</span>
+                    <span class="hours-time">10:00 AM - 4:00 PM</span>
+                </div>
+                <div class="hours-row">
+                    <span class="hours-day">Sunday</span>
+                    <span class="hours-time">Closed</span>
+                </div>
+            </div>
+            
+            <div class="solar-system">
+                <div class="sun"></div>
+                <div class="orbit" style="width: 40px; height: 40px;">
+                    <div class="planet-orbit" style="animation-duration: 3s;">
+                        <div class="planet-dot" style="left: 100%; top: 50%; background-color: #6e8efb;"></div>
+                    </div>
+                </div>
+                <div class="orbit" style="width: 60px; height: 60px;">
+                    <div class="planet-orbit" style="animation-duration: 5s;">
+                        <div class="planet-dot" style="left: 100%; top: 50%; background-color: #5d5dff;"></div>
+                    </div>
+                </div>
+                <div class="orbit" style="width: 80px; height: 80px;">
+                    <div class="planet-orbit" style="animation-duration: 8s;">
+                        <div class="planet-dot" style="left: 100%; top: 50%; background-color: #a777e3;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <svg class="constellation" style="top: 20px; left: 5%;" width="150" height="150" viewBox="0 0 150 150">
+        <line class="constellation-line" x1="50" y1="20" x2="90" y2="40" />
+        <line class="constellation-line" x1="90" y1="40" x2="120" y2="30" />
+        <line class="constellation-line" x1="120" y1="30" x2="130" y2="60" />
+        <line class="constellation-line" x1="90" y1="40" x2="70" y2="70" />
+        <line class="constellation-line" x1="70" y1="70" x2="30" y2="90" />
+        <line class="constellation-line" x1="70" y1="70" x2="100" y2="100" />
+        <circle class="constellation-dot" cx="50" cy="20" r="2" />
+        <circle class="constellation-dot" cx="90" cy="40" r="3" />
+        <circle class="constellation-dot" cx="120" cy="30" r="2" />
+        <circle class="constellation-dot" cx="130" cy="60" r="2" />
+        <circle class="constellation-dot" cx="70" cy="70" r="2.5" />
+        <circle class="constellation-dot" cx="30" cy="90" r="2" />
+        <circle class="constellation-dot" cx="100" cy="100" r="2" />
+    </svg>
+    
+    <svg class="constellation" style="bottom: 50px; right: 5%;" width="150" height="150" viewBox="0 0 150 150">
+        <line class="constellation-line" x1="20" y1="60" x2="50" y2="30" />
+        <line class="constellation-line" x1="50" y1="30" x2="80" y2="20" />
+        <line class="constellation-line" x1="80" y1="20" x2="110" y2="40" />
+        <line class="constellation-line" x1="110" y1="40" x2="120" y2="70" />
+        <line class="constellation-line" x1="120" y1="70" x2="90" y2="100" />
+        <line class="constellation-line" x1="90" y1="100" x2="50" y2="90" />
+        <line class="constellation-line" x1="50" y1="90" x2="20" y2="60" />
+        <circle class="constellation-dot" cx="20" cy="60" r="2" />
+        <circle class="constellation-dot" cx="50" cy="30" r="2.5" />
+        <circle class="constellation-dot" cx="80" cy="20" r="3" />
+        <circle class="constellation-dot" cx="110" cy="40" r="2" />
+        <circle class="constellation-dot" cx="120" cy="70" r="2" />
+        <circle class="constellation-dot" cx="90" cy="100" r="2.5" />
+        <circle class="constellation-dot" cx="50" cy="90" r="2" />
+    </svg>
+    
+    <script>
+        // Create floating asteroids
+        function createAsteroids() {
+            const container = document.getElementById('asteroidsContainer');
+            for (let i = 0; i < 20; i++) {
+                const asteroid = document.createElement('div');
+                asteroid.className = 'asteroid';
+                
+                // Random position
+                asteroid.style.left = Math.random() * 100 + '%';
+                
+                // Random size
+                const size = Math.random() * 4 + 2;
+                asteroid.style.width = size + 'px';
+                asteroid.style.height = size + 'px';
+                
+                // Random duration and delay
+                const duration = Math.random() * 20 + 10;
+                asteroid.style.animationDuration = duration + 's';
+                asteroid.style.animationDelay = Math.random() * 10 + 's';
+                
+                container.appendChild(asteroid);
+            }
+        }
+        
+        // Handle form submission
+        function handleSubmit(event) {
+            event.preventDefault();
+            
+            // Basic validation
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            if (!name || !email || !subject || !message) {
+                alert('Please fill out all required fields.');
+                return false;
+            }
+            
+            // Show success message
+            document.getElementById('contactForm').classList.add('hidden');
+            document.getElementById('successMessage').style.display = 'block';
+            
+            // EASTER EGG: Create shooting stars when form is submitted
+            createShootingStars();
+            
+            return false;
+        }
+        
+        // Create shooting stars animation
+        function createShootingStars() {
+            for (let i = 0; i < 10; i++) {
+                setTimeout(() => {
+                    const star = document.createElement('div');
+                    star.className = 'shooting-star';
+                    
+                    // Set random starting position
+                    star.style.left = Math.random() * window.innerWidth + 'px';
+                    star.style.top = '0';
+                    
+                    document.body.appendChild(star);
+                    
+                    // Animate the star
+                    let startX = parseInt(star.style.left);
+                    let startY = 0;
+                    let angle = Math.PI / 4 + (Math.random() * Math.PI / 8);
+                    let speed = Math.random() * 5 + 8;
+                    
+                    star.style.opacity = '1';
+                    
+                    const animateStar = () => {
+                        startX += Math.cos(angle) * speed;
+                        startY += Math.sin(angle) * speed;
+                        
+                        star.style.left = startX + 'px';
+                        star.style.top = startY + 'px';
+                        
+                        if (startY < window.innerHeight) {
+                            requestAnimationFrame(animateStar);
+                        } else {
+                            star.remove();
+                        }
+                    };
+                    
+                    requestAnimationFrame(animateStar);
+                }, i * 300);
+            }
+        }
+        
+        // EASTER EGG: Map click activation
+        document.querySelector('.map-container').addEventListener('click', function() {
+            const ufo = document.getElementById('ufo');
+            const ufoLight = ufo.querySelector('.ufo-light');
+            
+            // Position the UFO above the map
+            const mapRect = this.getBoundingClientRect();
+            ufo.style.top = (mapRect.top - 30) + 'px';
+            ufo.style.left = (mapRect.left + mapRect.width/2) + 'px';
+            
+            // Show the UFO
+            ufo.style.opacity = '1';
+            
+            // Animate the UFO
+            setTimeout(() => {
+                ufoLight.style.opacity = '1';
+                
+                // Create abduction beam effect
+                const beam = document.createElement('div');
+                beam.style.position = 'absolute';
+                beam.style.width = '50px';
+                beam.style.height = '0';
+                beam.style.bottom = '0';
+                beam.style.left = '50%';
+                beam.style.transform = 'translateX(-50%)';
+                beam.style.background = 'linear-gradient(to bottom, rgba(255, 255, 255, 0.8), transparent)';
+                beam.style.borderRadius = '50% 50% 0 0';
+                beam.style.zIndex = '-1';
+                
+                ufo.appendChild(beam);
+                
+                // Animate the beam
+                let beamHeight = 0;
+                const growBeam = () => {
+                    beamHeight += 5;
+                    beam.style.height = beamHeight + 'px';
+                    
+                    if (beamHeight < mapRect.height + 40) {
+                        requestAnimationFrame(growBeam);
+                    } else {
+                        // Display message
+                        const message = document.createElement('div');
+                        message.textContent = "BEAM ME UP!";
+                        message.style.position = 'absolute';
+                        message.style.top = '50%';
+                        message.style.left = '50%';
+                        message.style.transform = 'translate(-50%, -50%)';
+                        message.style.color = 'white';
+                        message.style.fontSize = '1.5rem';
+                        message.style.fontWeight = 'bold';
+                        message.style.textShadow = '0 0 10px #5d5dff, 0 0 20px #7367f0';
+                        message.style.zIndex = '1001';
+                        
+                        document.querySelector('.map-placeholder').appendChild(message);
+                        
+                        // Hide everything after a few seconds
+                        setTimeout(() => {
+                            message.style.opacity = '0';
+                            beam.style.opacity = '0';
+                            ufoLight.style.opacity = '0';
+                            ufo.style.opacity = '0';
+                            
+                            setTimeout(() => {
+                                message.remove();
+                                beam.remove();
+                            }, 500);
+                        }, 3000);
+                    }
+                };
+                
+                requestAnimationFrame(growBeam);
+            }, 500);
+        });
+        
+        // EASTER EGG: Konami code implementation
+        let konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+        let konamiPosition = 0;
+        
+        document.addEventListener('keydown', function(e) {
+            // Check if the pressed key matches the next key in the Konami code
+            if (e.key === konamiCode[konamiPosition]) {
+                konamiPosition++;
+                
+                // If the complete code is entered
+                if (konamiPosition === konamiCode.length) {
+                    activateWarpDrive();
+                    konamiPosition = 0; // Reset the position for future use
+                }
+            } else {
+                konamiPosition = 0; // Reset if the sequence is broken
+            }
+        });
+        
+        // Function to activate the warp drive (Easter Egg)
+        function activateWarpDrive() {
+            const body = document.body;
+
+            // Add warp drive effect
+            body.style.transition = 'background 1s ease-in-out';
+            body.style.background = 'radial-gradient(circle, #ff5e62, #ff9966, #7367f0, #5d5dff)';
+
+            // Add a message
+            const warpMessage = document.createElement('div');
+            warpMessage.textContent = "WARP DRIVE ACTIVATED!";
+            warpMessage.style.position = 'fixed';
+            warpMessage.style.top = '50%';
+            warpMessage.style.left = '50%';
+            warpMessage.style.transform = 'translate(-50%, -50%)';
+            warpMessage.style.color = 'white';
+            warpMessage.style.fontSize = '2rem';
+            warpMessage.style.fontWeight = 'bold';
+            warpMessage.style.textShadow = '0 0 10px #fff, 0 0 20px #ff5e62';
+            warpMessage.style.zIndex = '1000';
+            warpMessage.style.opacity = '0';
+            warpMessage.style.transition = 'opacity 1s ease-in-out';
+
+            body.appendChild(warpMessage);
+
+            // Fade in the message
+            setTimeout(() => {
+                warpMessage.style.opacity = '1';
+            }, 100);
+
+            // Fade out and remove the message after a few seconds
+            setTimeout(() => {
+                warpMessage.style.opacity = '0';
+                setTimeout(() => {
+                    warpMessage.remove();
+                }, 1000);
+            }, 3000);
+
+            // Reset the background after a few seconds
+            setTimeout(() => {
+                body.style.background = '';
+            }, 5000);
+        }
+    </script>
+</body>
+</html>

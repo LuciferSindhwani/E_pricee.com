@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electronics - Price Comparison</title>
+    <link rel="stylesheet" href="main1.css">
+    <link rel="stylesheet" href="heading.css">
+    <link rel="stylesheet" href="background.css">
+    <link rel="stylesheet" href="intro.css">
+    <link rel="stylesheet" href="chatbot.css">
+    <link rel="stylesheet" href="footer.css">
+    <link rel="stylesheet" href="menu.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        header {
+            display: flex;
+            justify-content: center;
+            color: aliceblue;
+        }
+
+        .product-card {
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            color: #fff;
+        }
+
+        .product-card img {
+            max-width: 100%;
+            border-radius: 10px;
+        }
+
+        .product-card h2 {
+            font-size: 1.5rem;
+            margin: 10px 0;
+        }
+
+        .product-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .product-card ul li {
+            margin: 5px 0;
+        }
+
+        /* Fix the menu button to the top-left corner */
+        .cosmic-menu-container {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            z-index: 2000;
+        }
+
+        .cosmic-button {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .menu-icon {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .menu-lines {
+            width: 25px;
+            height: 3px;
+            background-color: #fff;
+        }
+
+        .cosmic-menu {
+            display: none;
+            position: absolute;
+            top: 50px;
+            left: 0;
+            background-color: #222;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .cosmic-menu.open {
+            display: block;
+        }
+
+        .menu-item {
+            display: block;
+            color: #fff;
+            text-decoration: none;
+            margin: 5px 0;
+        }
+
+        .menu-item:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer Styling */
+        footer {
+            background-color: #222; /* Match the homepage footer background color */
+            color: #fff; /* Match the homepage footer text color */
+            text-align: center;
+            padding: 20px 10px;
+            font-size: 0.9rem;
+            border-top: 1px solid #444; /* Optional: Add a border for separation */
+        }
+
+        footer a.line {
+            color: #4caf50; /* Match the homepage link color */
+            text-decoration: none;
+        }
+
+        footer a.line:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <!-- Menu Button -->
+    <div class="cosmic-menu-container">
+        <button class="cosmic-button" id="menuButton">
+            <div class="menu-icon">
+                <div class="menu-lines"></div>
+                <div class="menu-lines"></div>
+                <div class="menu-lines"></div>
+            </div>
+        </button>
+        <nav class="cosmic-menu" id="cosmicMenu">
+            <a href="index.html" class="menu-item">Home</a>
+            <a href="electronics.html" class="menu-item">Electronics</a>
+            <a href="fashion.html" class="menu-item">Fashion</a>
+            <a href="home-appliances.html" class="menu-item">Home Appliances</a>
+            <a href="beauty.html" class="menu-item">Beauty</a>
+        </nav>
+    </div>
+
+    <script>
+        const menuButton = document.getElementById('menuButton');
+        const cosmicMenu = document.getElementById('cosmicMenu');
+
+        menuButton.addEventListener('click', () => {
+            cosmicMenu.classList.toggle('open');
+        });
+    </script>
+
+    <!-- Cosmos Background -->
+    <div class="stars-container"></div>
+    <div class="nebula nebula-1"></div>
+    <div class="nebula nebula-2"></div>
+    <div class="planet planet-1"></div>
+    <div class="planet planet-2"></div>
+    <div class="planet planet-3"></div>
+
+    <!-- Header Section -->
+    <header>
+        <div class="a">
+            <h1 class="heading">
+                <div class="typing-container">
+                    <span id="typing"></span>
+                    <span class="cursor"></span>
+                </div>
+            </h1>
+        </div>
+        
+        <script>
+            const words = ["Smartphone", "Laptops", "Watches", "Televisions", "Fans", "LEDs", "Electronics"];
+            let wordIndex = 0;
+            let charIndex = 0;
+            let isDeleting = false;
+
+            const typingElement = document.getElementById("typing");
+
+            function type() {
+                const currentWord = words[wordIndex];
+                if (isDeleting) {
+                    charIndex--;
+                } else {
+                    charIndex++;
+                }
+
+                typingElement.textContent = "Find the Best Deals on " + currentWord.substring(0, charIndex);
+
+                const typingSpeed = isDeleting ? 50 : 100;
+
+                if (!isDeleting && charIndex === currentWord.length) {
+                    isDeleting = true;
+                    setTimeout(type, 500);
+                } else if (isDeleting && charIndex === 0) {
+                    isDeleting = false;
+                    wordIndex = (wordIndex + 1) % words.length;
+                    setTimeout(type, 300);
+                } else {
+                    setTimeout(type, typingSpeed);
+                }
+            }
+
+            type();
+        </script>
+    </header>
+
+    <!-- Chatbot Section -->
+   
+    <script>
+        const chatbotToggle = document.getElementById('chatbot-toggle');
+        const chatbot = document.getElementById('chatbot');
+        const chatbotClose = document.getElementById('chatbot-close');
+
+        chatbotToggle.addEventListener('click', () => {
+            chatbot.style.display = 'block';
+        });
+
+        chatbotClose.addEventListener('click', () => {
+            chatbot.style.display = 'none';
+        });
+    </script>
+
+    <!-- Product Section -->
+    <section class="product-container">
+        <!-- Product 1 -->
+        <div class="product-card">
+            <img src="https://p3-ofp.static.pub//fes/cms/2024/06/26/ravvnzgarw7bythg8flb3xuk7jpcj1910623.jpg" alt="Laptop">
+            <h2>Laptop</h2>
+            <p>Price Comparison:</p>
+            <ul>
+                <li>Amazon: $999</li>
+                <li>eBay: $950</li>
+                <li>Best Buy: $970</li>
+            </ul>
+        </div>
+
+        <!-- Product 2 -->
+        <div class="product-card">
+            <img src="https://tse2.mm.bing.net/th?id=OIP.uonR7WqCKBgsTwY_d1oaYwHaHa&pid=Api&P=0&h=180" alt="Smartphone">
+            <h2>Smartphone</h2>
+            <p>Price Comparison:</p>
+            <ul>
+                <li>Amazon: $699</li>
+                <li>eBay: $680</li>
+                <li>Walmart: $690</li>
+            </ul>
+        </div>
+
+        <!-- Product 3 -->
+        <div class="product-card">
+            <img src="https://www.headphonezone.in/cdn/shop/products/Headphone-Zone-Audio-technica-m20x-1160-1160-1.jpg?v=1590482291&width=800" alt="Headphones">
+            <h2>Headphones</h2>
+            <p>Price Comparison:</p>
+            <ul>
+                <li>Amazon: $199</li>
+                <li>eBay: $180</li>
+                <li>Best Buy: $190</li>
+            </ul>
+        </div>
+
+        <!-- Product 4 -->
+        <div class="product-card">
+            <img src="https://cdn.fcglcdn.com/brainbees/images/products/583x720/11755498a.webp" alt="Smartwatch">
+            <h2>Smartwatch</h2>
+            <p>Price Comparison:</p>
+            <ul>
+                <li>Amazon: $299</li>
+                <li>eBay: $280</li>
+                <li>Walmart: $290</li>
+            </ul>
+        </div>
+
+        <div class="product-card">
+            <img src="https://tse1.mm.bing.net/th?id=OIP.WoE9TdgueNXcGH5wA36iEwAAAA&pid=Api&P=0&h=180" alt="Microwave">
+            <h2>Oven</h2>
+            <p>Price Comparison:</p>
+            <ul>
+                <li>Amazon: $999</li>
+                <li>eBay: $950</li>
+                <li>Best Buy: $970</li>
+            </ul>
+        </div>
+
+        <div class="product-card">
+            <img src="https://m.media-amazon.com/images/I/61CnOc43z-L.SL1500.jpg" alt="Hair Straightener">
+            <h2>Hair Straightener</h2>
+            <p>Price Comparison:</p>
+            <ul>
+                <li>Amazon: $999</li>
+                <li>eBay: $950</li>
+                <li>Best Buy: $970</li>
+            </ul>
+        </div>
+
+        <div class="product-card">
+            <img src="https://sp.yimg.com/ib/th?id=OPAC.W5ioXSrjsdTrRQ474C474&o=5&pid=21.1&w=160&h=105" alt="Hair Dryer">
+            <h2>Hair Dryer</h2>
+            <p>Price Comparison:</p>
+            <ul>
+                <li>Amazon: $999</li>
+                <li>eBay: $950</li>
+                <li>Best Buy: $970</li>
+            </ul>
+        </div>
+
+        <div class="product-card">
+            <img src="https://tse2.mm.bing.net/th?id=OIP.8LhJ0CaWyhQ7s2zxlZZ3hAHaE8&pid=Api&P=0&h=180" alt="Air Conditioner">
+            <h2>Air Conditioner</h2>
+            <p>Price Comparison:</p>
+            <ul>
+                <li>Amazon: $999</li>
+                <li>eBay: $950</li>
+                <li>Best Buy: $970</li>
+            </ul>
+        </div>
+
+        <div class="product-card">
+            <img src="https://premierappliancesandiego.com/images/lg_dishwasher.jpg" alt="Dishwasher">
+            <h2>Dishwasher</h2>
+            <p>Price Comparison:</p>
+            <ul>
+                <li>Amazon: $999</li>
+                <li>eBay: $950</li>
+                <li>Best Buy: $970</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <div id="footer_text1">
+            Download: <a class="line" href="#">Android Application</a> | <a class="line" href="#">iOS Application</a>
+        </div>
+        <div>&copy; Copyright Red Pixels Ventures Limited 2023. All rights reserved.</div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="background.js"></script>
+    <script src="menu.js"></script>
+</body>
+</html>
