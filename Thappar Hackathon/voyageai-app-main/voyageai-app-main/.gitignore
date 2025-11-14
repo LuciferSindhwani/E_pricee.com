@@ -12,6 +12,26 @@ dist
 dist-ssr
 *.local
 
+# Python virtual environments
+.venv
+venv
+env
+ENV
+env.bak
+venv.bak
+*.pyc
+__pycache__
+*.egg-info
+.pytest_cache
+.coverage
+htmlcov
+
+# Django
+*.sqlite3
+.env
+.env.local
+.env.*.local
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
@@ -22,3 +42,36 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+*~
+
+# Temporary/Interim Documentation (keep in local, exclude from repo)
+AI_ACCURACY_IMPROVEMENTS.md
+AI_INTEGRATION_COMPLETE.md
+COMPLETE_FIXES_SUMMARY.md
+COMPLETION_REPORT.md
+ENHANCED_INPUT_BOXES_GUIDE.md
+ENHANCED_TRIP_SUGGESTIONS.md
+EXPLORE_PAGE_FIX.md
+FINAL_FIX_SUMMARY.md
+FINAL_GIT_VERIFICATION_REPORT.md
+FINAL_STATUS_REPORT.md
+GENERIC_SUGGESTIONS_FIX.md
+GIT_STATUS_SUMMARY.md
+IMPLEMENTATION_REPORT.md
+INDEX.md
+INPUT_BOXES_QUICK_REFERENCE.md
+PLANNER_PAGE_GUIDE.md
+PLANNER_QUICK_REFERENCE.md
+QUICK_TEST_GUIDE.md
+SUMMARY_TRIP_SUGGESTIONS.md
+TESTING_GUIDE.md
+TRIP_EXAMPLES.md
+TRIP_SUGGESTIONS_CHANGES.md
+TRIP_SUGGESTIONS_INDEX.md
+VERIFICATION_CHECKLIST.md
